@@ -24,11 +24,12 @@ const projects = [
     github:
       "https://docs.google.com/presentation/d/1FenouPHBdPi9fJLOlw4dqXsBvWRs2eVi/edit?usp=sharing&ouid=109088702521409839637&rtpof=true&sd=true",
   },
+  // Hello
   {
     title: "F*** This App",
     description:
       "A Mobile app developed to help users break addictions and bad habits.",
-    image: "images/F-this.png",
+    image: "images/F-This.png",
     github: "https://www.youtube.com/watch?v=_chaWwF3OZw",
   },
   {
@@ -90,7 +91,7 @@ const jobs = [
     company: "Stanford Human-Centered Artificial Intelligence Center",
     description:
       "Delivered 50+ data-driven analyses featured in the 2023 AI Index report, highlighting AI's societal impacts. Explored constraints within AI systems to propose strategies for fostering inclusivity in AI applications.",
-    image: "images/HAI.png",
+    image: "images/Hai.png",
     link: "https://hai.stanford.edu/",
   },
   {

@@ -1,10 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { Card } from "@/components/ui/Card";
 
 const projects = [
   {
@@ -61,24 +58,6 @@ const projects = [
     image: "/images/TAG.png",
     github: "https://devpost.com/software/tag-bhw52e#updates",
   },
-];
-
-const skills = [
-  { name: "Web Development (React, Next.js, TypeScript)", level: 85 },
-  { name: "Mobile Development (React Native, Expo)", level: 90 },
-  { name: "Python", level: 80 },
-  { name: "C++", level: 70 },
-  // Developer Tools/Frameworks
-  // AI Skills
-  {
-    name: "AI Development (LLMs, RAG, Knowledge Graphs, Computer Vision, NLP)",
-    level: 80,
-  },
-  // Hobbies
-  { name: "Ocean Swimming", level: 80 },
-  { name: "Surfing", level: 30 },
-  { name: "Running", level: 50 },
-  { name: "Solving the NYT Games", level: 100 },
 ];
 
 const jobs = [
@@ -152,8 +131,6 @@ const Navbar = () => {
 };
 
 const Portfolio = () => {
-  const [index, setIndex] = useState(0);
-
   return (
     <div className="min-h-screen bg-[#1a1a2e] text-white-500">
       <Navbar />
@@ -163,7 +140,7 @@ const Portfolio = () => {
           animate={{ y: 0, opacity: 1 }}
           className="text-8xl font-bold bg-clip-text"
         >
-          Hey, I'm Lucy Zimmerman!
+          Hey, I&apos;m Lucy Zimmerman!
         </motion.h1>
       </section>
 
@@ -173,17 +150,17 @@ const Portfolio = () => {
           animate={{ opacity: 1 }}
           className="text-2xl text-center max-w-4xl"
         >
-          I'm a student at Stanford University where I study Computer Science
-          and Creative Writing. I grew up in Sydney, Australia.
+          I&apos;m a student at Stanford University where I study Computer
+          Science and Creative Writing. I grew up in Sydney, Australia.
           <br />
           <br />
-          I'm passionate about empowering humanity with technology that has an
-          impact with an interest that lies in human-centred AI. I love building
-          solutions from the ground up, energetically leading and bringing my
-          creativity everywhere I go.
+          I&apos;m passionate about empowering humanity with technology that has
+          an impact with an interest that lies in human-centred AI. I love
+          building solutions from the ground up, energetically leading and
+          bringing my creativity everywhere I go.
           <br />
           <br />
-          Let's make an impact together!
+          Let&apos;s make an impact together!
         </motion.p>
       </section>
 
@@ -264,7 +241,7 @@ const Portfolio = () => {
                 name: "Web Development (React, Next.js, TypeScript)",
                 level: 85,
               },
-              { name: "Mobile Development (React Native, Expo)", level: 85 },
+              { name: "Mobile Development (React Native, Expo)", level: 90 },
               { name: "Python", level: 80 },
               { name: "C++", level: 70 },
 

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Nanum_Gothic_Coding } from "next/font/google";
 import "./globals.css";
 

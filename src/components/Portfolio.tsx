@@ -7,20 +7,20 @@ const projects = [
   {
     title: "The Quad",
     description: "A prediction market for the Stanford community",
-    image: "/images/Quad.png",
+    image: "images/Quad.png",
     github: "https://github.com/lucyzimmo/the-quad",
   },
   {
     title: "Background Buddy",
     description:
       "Unveiling key archival context for the Minnesota tribunal with AI-powered knowledge graphs.",
-    image: "/images/KG.png",
+    image: "images/KG.png",
     github: "https://github.com/akanshyabhat/backgroundbuddy",
   },
   {
     title: "TransparencyGPT",
     description: "A mobile app leveraging AI to combat news misinformation",
-    image: "/images/TG.png",
+    image: "images/TG.png",
     github:
       "https://docs.google.com/presentation/d/1FenouPHBdPi9fJLOlw4dqXsBvWRs2eVi/edit?usp=sharing&ouid=109088702521409839637&rtpof=true&sd=true",
   },
@@ -28,34 +28,34 @@ const projects = [
     title: "F*** This App",
     description:
       "A Mobile app developed to help users break addictions and bad habits.",
-    image: "/images/F-this.png",
+    image: "images/F-this.png",
     github: "https://www.youtube.com/watch?v=_chaWwF3OZw",
   },
   {
     title: "Food Insecurity Planning Model",
     description:
       "A Machine learning model for optimal food bank distribution in high-need areas.",
-    image: "/images/FoodBank.png",
+    image: "images/FoodBank.png",
     github: "https://github.com/lucyzimmo/Food-Planning-Model",
   },
   {
     title: "Smart Connections",
     description:
       "A Deep Q-learning agent designed to solve the NYT Connections Puzzle.",
-    image: "/images/SC.png",
+    image: "images/SC.png",
     github: "https://github.com/lucyzimmo/SmartConnections",
   },
   {
     title: "MinBERT",
     description: "We built a BERT model enhanced by SimSCE",
-    image: "/images/minBERT.png",
+    image: "images/minBERT.png",
     github: "https://github.com/CS224N-RL-LZ-JK/miniBert",
   },
 
   {
     title: "TAG",
     description: "An app for prioritizing meaningful conversations",
-    image: "/images/TAG.png",
+    image: "images/TAG.png",
     github: "https://devpost.com/software/tag-bhw52e#updates",
   },
 ];
@@ -66,7 +66,7 @@ const jobs = [
     company: "C.I.S.A.",
     description:
       "Lead Research Intern for Senior Advisor for Technology and Innovation focused on AI + Human Rights.",
-    image: "/images/CISA.webp",
+    image: "images/CISA.webp",
     link: "https://www.cisa.gov/",
   },
   {
@@ -74,7 +74,7 @@ const jobs = [
     company: "Stanford Human Trafficking Data Lab",
     description:
       "Implemented remote detection algorithms leveraging satellite and geospatial data for pinpointing trafficking hotspots. Collaborated on computer vision models, contributing to ethical applications of AI in global challenges.",
-    image: "/images/HT.jpg",
+    image: "images/HT.jpg",
     link: "https://htdatalab.stanford.edu/",
   },
   {
@@ -82,7 +82,7 @@ const jobs = [
     company: "Block Party",
     description:
       "Conducted 50+ user interviews to assess product fit and prioritize engineering solutions for harassment prevention tools. Organized beta testing initiatives and recruitment campaigns, driving iterative improvements in user experience.",
-    image: "/images/BP.png",
+    image: "images/BP.png",
     link: "https://www.blockparty.com/",
   },
   {
@@ -90,7 +90,7 @@ const jobs = [
     company: "Stanford Human-Centered Artificial Intelligence Center",
     description:
       "Delivered 50+ data-driven analyses featured in the 2023 AI Index report, highlighting AI's societal impacts. Explored constraints within AI systems to propose strategies for fostering inclusivity in AI applications.",
-    image: "/images/HAI.png",
+    image: "images/HAI.png",
     link: "https://hai.stanford.edu/",
   },
   {
@@ -98,7 +98,7 @@ const jobs = [
     company: "WiseTech Global",
     description:
       "Modernized software architecture for logistics platforms, coding over 2,000 lines and integrating scalable infrastructure. Supported operational systems for top global freight forwarders, improving efficiency and reliability.",
-    image: "/images/WT.jpg",
+    image: "images/WT.jpg",
     link: "https://www.wisetechglobal.com/",
   },
   {
@@ -106,7 +106,7 @@ const jobs = [
     company: "Presien",
     description:
       "Built Blindsight, a safety solution for industrial environments powered by AI vision.",
-    image: "/images/Presien.png",
+    image: "images/Presien.png",
     link: "https://www.presien.com/",
   },
 ];

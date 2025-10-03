@@ -120,6 +120,14 @@ const timeline = [
 
 const jobs = [
   {
+    title: "Co-Founder & Lead Engineer",
+    company: "SubLine",
+    description:
+      "Building an AI platform for news organizations. Leading custom NLP model development, human-in-the-loop annotation platform, and interactive knowledge graph UI.",
+    image: "images/subline.png",
+    link: "https://www.sub-line.com/",
+  },
+  {
     title: "CS + Social Good Fellow",
     company: "C.I.S.A.",
     description:
@@ -315,7 +323,14 @@ const Portfolio = () => {
             className="bg-[#1a1a2e] p-8 rounded-lg border-2 border-[#1F51FF]"
           >
             <h3 className="text-3xl font-bold mb-4 text-[#1F51FF]">
-              SubLine – AI Research Assistant for Journalists
+              <a
+                href="https://www.sub-line.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline text-[#1F51FF]"
+              >
+                SubLine – AI Research Platform for News Organizations
+              </a>
             </h3>
             <div className="text-lg text-gray-300 space-y-4">
               <p>
@@ -601,7 +616,7 @@ const Portfolio = () => {
                     <motion.img
                       src={job.image}
                       alt={job.title}
-                      className="object-cover w-full h-full rounded-lg"
+                      className="object-contain w-full h-full rounded-lg"
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.3 }}
                     />

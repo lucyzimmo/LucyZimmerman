@@ -103,7 +103,7 @@ const timeline = [
     year: "2023",
     title: "Stanford HAI",
     description:
-      "Co-authored AI Index harms chapter, bridging technical work and policy.",
+      "Contributing to AI Index harms chapter, bridging technical work and policy.",
   },
   {
     year: "2022–2023",

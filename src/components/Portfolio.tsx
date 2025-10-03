@@ -118,6 +118,57 @@ const timeline = [
   },
 ];
 
+const jobs = [
+  {
+    title: "CS + Social Good Fellow",
+    company: "C.I.S.A.",
+    description:
+      "Lead Research Intern for Senior Advisor for Technology and Innovation focused on AI + Human Rights.",
+    image: "images/CISA.webp",
+    link: "https://www.cisa.gov/",
+  },
+  {
+    title: "Research Assistant",
+    company: "Stanford Human Trafficking Data Lab",
+    description:
+      "Implemented remote detection algorithms leveraging satellite and geospatial data for pinpointing trafficking hotspots. Collaborated on computer vision models, contributing to ethical applications of AI in global challenges.",
+    image: "images/HT.jpg",
+    link: "https://htdatalab.stanford.edu/",
+  },
+  {
+    title: "User Research Assistant, Product and Engineering Team",
+    company: "Block Party",
+    description:
+      "Conducted 50+ user interviews to assess product fit and prioritize engineering solutions for harassment prevention tools. Organized beta testing initiatives and recruitment campaigns, driving iterative improvements in user experience.",
+    image: "images/BP.png",
+    link: "https://www.blockparty.com/",
+  },
+  {
+    title: "Research Assistant",
+    company: "Stanford Human-Centered Artificial Intelligence Center",
+    description:
+      "Delivered 50+ data-driven analyses featured in the 2023 AI Index report, highlighting AI's societal impacts. Explored constraints within AI systems to propose strategies for fostering inclusivity in AI applications.",
+    image: "images/Hai.png",
+    link: "https://hai.stanford.edu/",
+  },
+  {
+    title: "Software Engineer",
+    company: "WiseTech Global",
+    description:
+      "Modernized software architecture for logistics platforms, coding over 2,000 lines and integrating scalable infrastructure. Supported operational systems for top global freight forwarders, improving efficiency and reliability.",
+    image: "images/WT.jpg",
+    link: "https://www.wisetechglobal.com/",
+  },
+  {
+    title: "Product Engineer",
+    company: "Presien",
+    description:
+      "Built Blindsight, a safety solution for industrial environments powered by AI vision.",
+    image: "images/Presien.png",
+    link: "https://www.presien.com/",
+  },
+];
+
 const Navbar = () => {
   return (
     <nav className="flex justify-between items-center p-4 bg-[#1a1a2e] text-[#eaeaea]">
@@ -137,6 +188,9 @@ const Navbar = () => {
         </a>
         <a href="#timeline" className="hover:text-[#1F51FF]">
           Timeline
+        </a>
+        <a href="#experience" className="hover:text-[#1F51FF]">
+          Experience
         </a>
       </div>
     </nav>
@@ -517,6 +571,65 @@ const Portfolio = () => {
                   </h3>
                   <p className="text-gray-300">{item.description}</p>
                 </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" className="min-h-screen py-20">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-6xl font-bold mb-12 text-center text-white-400"
+          >
+            Experience
+          </motion.h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {jobs.map((job, i) => (
+              <motion.div
+                key={i}
+                className="relative group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <Card className="bg-[#1a1a2e] border-[#1a1a2e] border-lg transition-all duration-300 transform group-hover:scale-105">
+                  <div className="relative overflow-hidden h-[300px]">
+                    <motion.img
+                      src={job.image}
+                      alt={job.title}
+                      className="object-cover w-full h-full rounded-lg"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    <motion.div
+                      className="absolute inset-0 bg-[#00ff00]/10 opacity-100 group-hover:bg-gray-900 transition-opacity duration-300 flex items-center justify-center"
+                      whileHover={{ opacity: 1 }}
+                    >
+                      <div className="text-white text-center px-6">
+                        <h3 className="opacity-0 group-hover:opacity-100 text-lg font-bold">
+                          {job.title}
+                        </h3>
+                        <p className="opacity-0 group-hover:opacity-100 text-xs mt-1 text-gray-400">
+                          <a
+                            href={job.link}
+                            target="_blank"
+                            className="hover:underline"
+                            rel="noopener noreferrer"
+                          >
+                            {job.company}
+                          </a>
+                        </p>
+                        <p className="opacity-0 group-hover:opacity-100 text-sm mt-2">
+                          {job.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </div>
+                </Card>
               </motion.div>
             ))}
           </div>

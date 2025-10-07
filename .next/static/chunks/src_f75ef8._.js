@@ -57,9 +57,18 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$mo
 ;
 const projects = [
     {
+        title: "AsylumAssist",
+        year: "January 2025 – Present",
+        description: "Founding Full-Stack AI Engineer developing a mobile-first platform with the legal team at the Interfaith Center in NYC that guides asylum seekers through the court process and helps them generate legally-sound declaration PDFs with LLMs. Built with React.js, Node.js/Express, PostgreSQL, and Supabase with offline-first syncing. Impact: Reduces prep time from weeks to hours, saving $5k–$15k per case.",
+        image: "images/AsylumAssist.png",
+        objectPosition: "object-top",
+        github: "https://github.com/lucyzimmo/AsylumAssist",
+        featured: true
+    },
+    {
         title: "SubLine (Background Buddy)",
         year: "2024–present",
-        description: "Full-stack AI research assistant for journalists. Built custom NLP models (entity + relation extraction with RE-DocRED finetuning), designed a human-in-the-loop annotation platform, and developed an interactive graph UI for exploring knowledge. Currently leading pilots with newsrooms.",
+        description: "Full-stack AI platform for journalists. Built custom NLP models (entity + relation extraction with RE-DocRED finetuning), designed a human-in-the-loop annotation platform, and developed an interactive graph UI for exploring knowledge. Currently leading pilots with newsrooms.",
         image: "images/KG.png",
         github: "https://github.com/akanshyabhat/backgroundbuddy",
         featured: true
@@ -130,9 +139,14 @@ const projects = [
 ];
 const timeline = [
     {
+        year: "2025–present",
+        title: "AsylumAssist",
+        description: "Founding Full-Stack AI Engineer building mobile platform to guide asylum seekers through legal process."
+    },
+    {
         year: "2024–present",
         title: "SubLine",
-        description: "Leading development of full-stack AI research assistant for newsrooms."
+        description: "Leading development of full-stack AI platform for newsrooms."
     },
     {
         year: "2023",
@@ -157,6 +171,13 @@ const timeline = [
 ];
 const jobs = [
     {
+        title: "Founding Full-Stack AI Engineer",
+        company: "AsylumAssist",
+        description: "Developing a mobile-first platform with the legal team at the Interfaith Center in NYC that guides asylum seekers through the court process and helps them generate legally-sound declaration PDFs with LLMs. Impact: Reduces prep time from weeks to hours, saving $5k–$15k per case.",
+        image: "images/AsylumAssist.png",
+        link: "https://github.com/lucyzimmo/AsylumAssist"
+    },
+    {
         title: "Co-Founder & Lead Engineer",
         company: "SubLine",
         description: "Building an AI platform for news organizations. Leading custom NLP model development, human-in-the-loop annotation platform, and interactive knowledge graph UI.",
@@ -171,21 +192,21 @@ const jobs = [
         link: "https://www.cisa.gov/"
     },
     {
-        title: "Research Assistant",
+        title: "platform",
         company: "Stanford Human Trafficking Data Lab",
         description: "Implemented remote detection algorithms leveraging satellite and geospatial data for pinpointing trafficking hotspots. Collaborated on computer vision models, contributing to ethical applications of AI in global challenges.",
         image: "images/HT.jpg",
         link: "https://htdatalab.stanford.edu/"
     },
     {
-        title: "User Research Assistant, Product and Engineering Team",
+        title: "User platform, Product and Engineering Team",
         company: "Block Party",
         description: "Conducted 50+ user interviews to assess product fit and prioritize engineering solutions for harassment prevention tools. Organized beta testing initiatives and recruitment campaigns, driving iterative improvements in user experience.",
         image: "images/BP.png",
         link: "https://www.blockparty.com/"
     },
     {
-        title: "Research Assistant",
+        title: "platform",
         company: "Stanford Human-Centered Artificial Intelligence Center",
         description: "Delivered 50+ data-driven analyses featured in the 2023 AI Index report, highlighting AI's societal impacts. Explored constraints within AI systems to propose strategies for fostering inclusivity in AI applications.",
         image: "images/Hai.png",
@@ -215,7 +236,7 @@ const Navbar = ()=>{
                 children: "Lucy Zimmerman"
             }, void 0, false, {
                 fileName: "[project]/src/components/Portfolio.tsx",
-                lineNumber: 183,
+                lineNumber: 207,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -227,7 +248,7 @@ const Navbar = ()=>{
                         children: "About"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Portfolio.tsx",
-                        lineNumber: 185,
+                        lineNumber: 209,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -236,7 +257,7 @@ const Navbar = ()=>{
                         children: "Current Work"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Portfolio.tsx",
-                        lineNumber: 188,
+                        lineNumber: 212,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -245,7 +266,7 @@ const Navbar = ()=>{
                         children: "Projects"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Portfolio.tsx",
-                        lineNumber: 191,
+                        lineNumber: 215,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -254,7 +275,7 @@ const Navbar = ()=>{
                         children: "Skills"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Portfolio.tsx",
-                        lineNumber: 194,
+                        lineNumber: 218,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -263,7 +284,7 @@ const Navbar = ()=>{
                         children: "Timeline"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Portfolio.tsx",
-                        lineNumber: 197,
+                        lineNumber: 221,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -272,19 +293,19 @@ const Navbar = ()=>{
                         children: "Experience"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Portfolio.tsx",
-                        lineNumber: 200,
+                        lineNumber: 224,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Portfolio.tsx",
-                lineNumber: 184,
+                lineNumber: 208,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/Portfolio.tsx",
-        lineNumber: 182,
+        lineNumber: 206,
         columnNumber: 5
     }, this);
 };
@@ -295,7 +316,7 @@ const Portfolio = ()=>{
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Navbar, {}, void 0, false, {
                 fileName: "[project]/src/components/Portfolio.tsx",
-                lineNumber: 211,
+                lineNumber: 235,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -316,7 +337,7 @@ const Portfolio = ()=>{
                             children: "Lucy Zimmerman"
                         }, void 0, false, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 215,
+                            lineNumber: 239,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].h2, {
@@ -332,10 +353,10 @@ const Portfolio = ()=>{
                                 delay: 0.2
                             },
                             className: "text-3xl md:text-4xl mb-4 text-[#1F51FF]",
-                            children: "AI Safety Researcher & Full-Stack AI Builder"
+                            children: "Full-Stack AI Builder & Researcher"
                         }, void 0, false, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 222,
+                            lineNumber: 246,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].p, {
@@ -349,10 +370,10 @@ const Portfolio = ()=>{
                                 delay: 0.4
                             },
                             className: "text-xl md:text-2xl mb-8 text-gray-300 max-w-4xl mx-auto",
-                            children: "I'm a Stanford CS Master's student working on SubLine, an AI research assistant for journalists. I design and deploy full-stack AI applications—from fine-tuning LLMs to building interactive human-in-the-loop platforms—that make AI safer, more interpretable, and impactful for society."
+                            children: "I'm an AI engineer and Stanford CS master’s student specializing in applied machine learning, AI safety, and product engineering. My background blends full-stack development and AI research — I'm currently building Sub-Line.com, an AI system that turns decades of news archives into searchable, interpretable intelligence for journalists and researchers — supported by a $125K Brown Institute for Media Innovation Magic Grant. I’m excited by roles that connect cutting-edge AI tools and research to products with real impact, especially in human-AI collaboration."
                         }, void 0, false, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 230,
+                            lineNumber: 254,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -375,7 +396,7 @@ const Portfolio = ()=>{
                                     children: "GitHub"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 248,
+                                    lineNumber: 269,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -386,24 +407,24 @@ const Portfolio = ()=>{
                                     children: "LinkedIn"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 256,
+                                    lineNumber: 277,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 242,
+                            lineNumber: 263,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/Portfolio.tsx",
-                    lineNumber: 214,
+                    lineNumber: 238,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/Portfolio.tsx",
-                lineNumber: 213,
+                lineNumber: 237,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -423,7 +444,7 @@ const Portfolio = ()=>{
                             children: "About"
                         }, void 0, false, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 271,
+                            lineNumber: 292,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -438,27 +459,27 @@ const Portfolio = ()=>{
                             className: "text-xl text-gray-300 space-y-6",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    children: "I'm passionate about building AI systems that are reliable, interpretable, and human-centered. My work spans both AI safety research and full-stack engineering, from fine-tuning custom NLP models to designing interactive platforms for human oversight."
+                                    children: "I'm passionate about building AI systems that are reliable, interpretable, and human-centered. My work spans both AI research and full-stack engineering, from fine-tuning custom NLP models to designing interactive platforms for human oversight."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 283,
+                                    lineNumber: 304,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     children: [
-                                        "Currently, I'm leading ",
+                                        "Currently, I'm working on ",
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                             children: "SubLine"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                            lineNumber: 290,
-                                            columnNumber: 43
+                                            lineNumber: 311,
+                                            columnNumber: 46
                                         }, this),
-                                        ", a full-stack AI research assistant for journalists featuring custom NLP fine-tuning, an interactive graph UI, and human-in-the-loop annotation systems."
+                                        ", a full-stack AI platform for journalists featuring custom NLP fine-tuning, an interactive graph UI, and human-in-the-loop annotation systems."
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 289,
+                                    lineNumber: 310,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -468,7 +489,7 @@ const Portfolio = ()=>{
                                             children: "TransparencyGPT"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                            lineNumber: 296,
+                                            lineNumber: 317,
                                             columnNumber: 37
                                         }, this),
                                         " (bias detection app selected for Dorm Room Fund), research at",
@@ -477,7 +498,7 @@ const Portfolio = ()=>{
                                             children: "Stanford HAI"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                            lineNumber: 298,
+                                            lineNumber: 319,
                                             columnNumber: 15
                                         }, this),
                                         " on AI harms, and computer vision + geospatial ML at the ",
@@ -485,14 +506,14 @@ const Portfolio = ()=>{
                                             children: "Human Trafficking Lab"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                            lineNumber: 299,
+                                            lineNumber: 320,
                                             columnNumber: 36
                                         }, this),
                                         "."
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 295,
+                                    lineNumber: 316,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -501,31 +522,31 @@ const Portfolio = ()=>{
                                             children: "Core philosophy:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                            lineNumber: 302,
+                                            lineNumber: 323,
                                             columnNumber: 15
                                         }, this),
                                         " AI must be reliable, interpretable, and human-centered to create meaningful impact for society."
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 301,
+                                    lineNumber: 322,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 278,
+                            lineNumber: 299,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/Portfolio.tsx",
-                    lineNumber: 270,
+                    lineNumber: 291,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/Portfolio.tsx",
-                lineNumber: 269,
+                lineNumber: 290,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -545,7 +566,7 @@ const Portfolio = ()=>{
                             children: "What I'm Working On"
                         }, void 0, false, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 313,
+                            lineNumber: 334,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -569,12 +590,12 @@ const Portfolio = ()=>{
                                         children: "SubLine – AI Research Platform for News Organizations"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Portfolio.tsx",
-                                        lineNumber: 326,
+                                        lineNumber: 347,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 325,
+                                    lineNumber: 346,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -584,7 +605,7 @@ const Portfolio = ()=>{
                                             children: "SubLine is a full-stack AI application designed to help journalists explore complex information through AI-powered knowledge graphs."
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                            lineNumber: 336,
+                                            lineNumber: 357,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -596,14 +617,14 @@ const Portfolio = ()=>{
                                                             children: "Custom NER Model:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                                            lineNumber: 343,
+                                                            lineNumber: 364,
                                                             columnNumber: 19
                                                         }, this),
                                                         " Trained domain-specific transformer-based entity extraction model to capture noisy and local entities"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                                    lineNumber: 342,
+                                                    lineNumber: 363,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -612,14 +633,14 @@ const Portfolio = ()=>{
                                                             children: "Document-Level Relation Extraction:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                                            lineNumber: 348,
+                                                            lineNumber: 369,
                                                             columnNumber: 19
                                                         }, this),
                                                         " Built comprehensive LLM fine-tuning pipeline on RE-DocRED with multi-label classification across 97 relation types (Mistral-7B, RoBERTa, DeBERTa)"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                                    lineNumber: 347,
+                                                    lineNumber: 368,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -628,14 +649,14 @@ const Portfolio = ()=>{
                                                             children: "End-to-End Deployment Platform:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                                            lineNumber: 354,
+                                                            lineNumber: 375,
                                                             columnNumber: 19
                                                         }, this),
                                                         " Engineered complete system with preprocessing, automated evaluation metrics, HuggingFace Hub integration, and production-ready deployment"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                                    lineNumber: 353,
+                                                    lineNumber: 374,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -644,14 +665,14 @@ const Portfolio = ()=>{
                                                             children: "Human-in-the-Loop Graph Interface:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                                            lineNumber: 360,
+                                                            lineNumber: 381,
                                                             columnNumber: 19
                                                         }, this),
                                                         " Built interactive React-based knowledge graph editor where reporters highlight text, review entities/relationships, and approve modifications that flow back into the training loop"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                                    lineNumber: 359,
+                                                    lineNumber: 380,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -660,20 +681,20 @@ const Portfolio = ()=>{
                                                             children: "Active Pilots:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                                            lineNumber: 366,
+                                                            lineNumber: 387,
                                                             columnNumber: 19
                                                         }, this),
                                                         " Currently running pilots with newsrooms to refine the platform"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                                    lineNumber: 365,
+                                                    lineNumber: 386,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                            lineNumber: 341,
+                                            lineNumber: 362,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -683,37 +704,37 @@ const Portfolio = ()=>{
                                                     children: "Tech Stack:"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                                    lineNumber: 371,
+                                                    lineNumber: 392,
                                                     columnNumber: 17
                                                 }, this),
                                                 " PyTorch, HuggingFace Transformers, React, Next.js, Flask, Supabase"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                            lineNumber: 370,
+                                            lineNumber: 391,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 335,
+                                    lineNumber: 356,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 320,
+                            lineNumber: 341,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/Portfolio.tsx",
-                    lineNumber: 312,
+                    lineNumber: 333,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/Portfolio.tsx",
-                lineNumber: 311,
+                lineNumber: 332,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -733,7 +754,7 @@ const Portfolio = ()=>{
                             children: "Projects"
                         }, void 0, false, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 381,
+                            lineNumber: 402,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -759,7 +780,9 @@ const Portfolio = ()=>{
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].img, {
                                                     src: project.image,
                                                     alt: project.title,
-                                                    className: "object-cover w-full h-full rounded-lg",
+                                                    className: `object-cover w-full h-full rounded-lg ${// allow per-project positioning to control crop
+                                                    // default center if not specified
+                                                    project.objectPosition || "object-center"}`,
                                                     whileHover: {
                                                         scale: 1.1
                                                     },
@@ -768,7 +791,7 @@ const Portfolio = ()=>{
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                                    lineNumber: 399,
+                                                    lineNumber: 420,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -787,7 +810,7 @@ const Portfolio = ()=>{
                                                                 children: project.title
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/Portfolio.tsx",
-                                                                lineNumber: 416,
+                                                                lineNumber: 441,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -795,7 +818,7 @@ const Portfolio = ()=>{
                                                                 children: project.year
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/Portfolio.tsx",
-                                                                lineNumber: 419,
+                                                                lineNumber: 444,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -803,7 +826,7 @@ const Portfolio = ()=>{
                                                                 children: project.description
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/Portfolio.tsx",
-                                                                lineNumber: 422,
+                                                                lineNumber: 447,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -811,50 +834,50 @@ const Portfolio = ()=>{
                                                                 children: "SEE MORE"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/Portfolio.tsx",
-                                                                lineNumber: 425,
+                                                                lineNumber: 450,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/Portfolio.tsx",
-                                                        lineNumber: 410,
+                                                        lineNumber: 435,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                                    lineNumber: 406,
+                                                    lineNumber: 431,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                            lineNumber: 398,
+                                            lineNumber: 419,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Portfolio.tsx",
-                                        lineNumber: 397,
+                                        lineNumber: 418,
                                         columnNumber: 17
                                     }, this)
                                 }, i, false, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 390,
+                                    lineNumber: 411,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 388,
+                            lineNumber: 409,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/Portfolio.tsx",
-                    lineNumber: 380,
+                    lineNumber: 401,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/Portfolio.tsx",
-                lineNumber: 379,
+                lineNumber: 400,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -874,7 +897,7 @@ const Portfolio = ()=>{
                             children: "Skills"
                         }, void 0, false, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 441,
+                            lineNumber: 466,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -885,7 +908,7 @@ const Portfolio = ()=>{
                                     children: "Full-Stack AI Applications"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 451,
+                                    lineNumber: 476,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -916,23 +939,23 @@ const Portfolio = ()=>{
                                                 children: skill
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Portfolio.tsx",
-                                                lineNumber: 471,
+                                                lineNumber: 496,
                                                 columnNumber: 19
                                             }, this)
                                         }, i, false, {
                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                            lineNumber: 464,
+                                            lineNumber: 489,
                                             columnNumber: 17
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 454,
+                                    lineNumber: 479,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 450,
+                            lineNumber: 475,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -943,7 +966,7 @@ const Portfolio = ()=>{
                                     children: "Deployment & Engineering"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 479,
+                                    lineNumber: 504,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -974,23 +997,23 @@ const Portfolio = ()=>{
                                                 children: skill
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Portfolio.tsx",
-                                                lineNumber: 499,
+                                                lineNumber: 524,
                                                 columnNumber: 19
                                             }, this)
                                         }, i, false, {
                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                            lineNumber: 492,
+                                            lineNumber: 517,
                                             columnNumber: 17
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 482,
+                                    lineNumber: 507,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 478,
+                            lineNumber: 503,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1001,7 +1024,7 @@ const Portfolio = ()=>{
                                     children: "Core ML & Research"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 507,
+                                    lineNumber: 532,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1029,23 +1052,23 @@ const Portfolio = ()=>{
                                                 children: skill
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Portfolio.tsx",
-                                                lineNumber: 524,
+                                                lineNumber: 549,
                                                 columnNumber: 19
                                             }, this)
                                         }, i, false, {
                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                            lineNumber: 517,
+                                            lineNumber: 542,
                                             columnNumber: 17
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 510,
+                                    lineNumber: 535,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 506,
+                            lineNumber: 531,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1055,7 +1078,7 @@ const Portfolio = ()=>{
                                     children: "Beyond Code"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 532,
+                                    lineNumber: 557,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1085,34 +1108,34 @@ const Portfolio = ()=>{
                                                 children: hobby
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Portfolio.tsx",
-                                                lineNumber: 551,
+                                                lineNumber: 576,
                                                 columnNumber: 19
                                             }, this)
                                         }, i, false, {
                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                            lineNumber: 544,
+                                            lineNumber: 569,
                                             columnNumber: 17
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 535,
+                                    lineNumber: 560,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 531,
+                            lineNumber: 556,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/Portfolio.tsx",
-                    lineNumber: 440,
+                    lineNumber: 465,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/Portfolio.tsx",
-                lineNumber: 439,
+                lineNumber: 464,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1132,7 +1155,7 @@ const Portfolio = ()=>{
                             children: "Timeline"
                         }, void 0, false, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 562,
+                            lineNumber: 587,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1158,12 +1181,12 @@ const Portfolio = ()=>{
                                                 children: item.year
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Portfolio.tsx",
-                                                lineNumber: 579,
+                                                lineNumber: 604,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                            lineNumber: 578,
+                                            lineNumber: 603,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1174,7 +1197,7 @@ const Portfolio = ()=>{
                                                     children: item.title
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                                    lineNumber: 584,
+                                                    lineNumber: 609,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1182,35 +1205,35 @@ const Portfolio = ()=>{
                                                     children: item.description
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                                    lineNumber: 587,
+                                                    lineNumber: 612,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                            lineNumber: 583,
+                                            lineNumber: 608,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, i, true, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 571,
+                                    lineNumber: 596,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 569,
+                            lineNumber: 594,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/Portfolio.tsx",
-                    lineNumber: 561,
+                    lineNumber: 586,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/Portfolio.tsx",
-                lineNumber: 560,
+                lineNumber: 585,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1230,7 +1253,7 @@ const Portfolio = ()=>{
                             children: "Experience"
                         }, void 0, false, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 598,
+                            lineNumber: 623,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1265,7 +1288,7 @@ const Portfolio = ()=>{
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                                    lineNumber: 616,
+                                                    lineNumber: 641,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -1281,7 +1304,7 @@ const Portfolio = ()=>{
                                                                 children: job.title
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/Portfolio.tsx",
-                                                                lineNumber: 628,
+                                                                lineNumber: 653,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1294,12 +1317,12 @@ const Portfolio = ()=>{
                                                                     children: job.company
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                                                    lineNumber: 632,
+                                                                    lineNumber: 657,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/Portfolio.tsx",
-                                                                lineNumber: 631,
+                                                                lineNumber: 656,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1307,56 +1330,56 @@ const Portfolio = ()=>{
                                                                 children: job.description
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/Portfolio.tsx",
-                                                                lineNumber: 641,
+                                                                lineNumber: 666,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/Portfolio.tsx",
-                                                        lineNumber: 627,
+                                                        lineNumber: 652,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                                    lineNumber: 623,
+                                                    lineNumber: 648,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/Portfolio.tsx",
-                                            lineNumber: 615,
+                                            lineNumber: 640,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Portfolio.tsx",
-                                        lineNumber: 614,
+                                        lineNumber: 639,
                                         columnNumber: 17
                                     }, this)
                                 }, i, false, {
                                     fileName: "[project]/src/components/Portfolio.tsx",
-                                    lineNumber: 607,
+                                    lineNumber: 632,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/src/components/Portfolio.tsx",
-                            lineNumber: 605,
+                            lineNumber: 630,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/Portfolio.tsx",
-                    lineNumber: 597,
+                    lineNumber: 622,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/Portfolio.tsx",
-                lineNumber: 596,
+                lineNumber: 621,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/Portfolio.tsx",
-        lineNumber: 210,
+        lineNumber: 234,
         columnNumber: 5
     }, this);
 };

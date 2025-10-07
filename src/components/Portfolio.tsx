@@ -5,10 +5,20 @@ import { Card } from "@/components/ui/Card";
 
 const projects = [
   {
+    title: "AsylumAssist",
+    year: "January 2025 – Present",
+    description:
+      "Founding Full-Stack AI Engineer developing a mobile-first platform with the legal team at the Interfaith Center in NYC that guides asylum seekers through the court process and helps them generate legally-sound declaration PDFs with LLMs. Built with React.js, Node.js/Express, PostgreSQL, and Supabase with offline-first syncing. Impact: Reduces prep time from weeks to hours, saving $5k–$15k per case.",
+    image: "images/AsylumAssist.png",
+    objectPosition: "object-top",
+    github: "https://github.com/lucyzimmo/AsylumAssist",
+    featured: true,
+  },
+  {
     title: "SubLine (Background Buddy)",
     year: "2024–present",
     description:
-      "Full-stack AI research assistant for journalists. Built custom NLP models (entity + relation extraction with RE-DocRED finetuning), designed a human-in-the-loop annotation platform, and developed an interactive graph UI for exploring knowledge. Currently leading pilots with newsrooms.",
+      "Full-stack AI platform for journalists. Built custom NLP models (entity + relation extraction with RE-DocRED finetuning), designed a human-in-the-loop annotation platform, and developed an interactive graph UI for exploring knowledge. Currently leading pilots with newsrooms.",
     image: "images/KG.png",
     github: "https://github.com/akanshyabhat/backgroundbuddy",
     featured: true,
@@ -88,10 +98,16 @@ const projects = [
 
 const timeline = [
   {
+    year: "2025–present",
+    title: "AsylumAssist",
+    description:
+      "Founding Full-Stack AI Engineer building mobile platform to guide asylum seekers through legal process.",
+  },
+  {
     year: "2024–present",
     title: "SubLine",
     description:
-      "Leading development of full-stack AI research assistant for newsrooms.",
+      "Leading development of full-stack AI platform for newsrooms.",
   },
   {
     year: "2023",
@@ -120,6 +136,14 @@ const timeline = [
 
 const jobs = [
   {
+    title: "Founding Full-Stack AI Engineer",
+    company: "AsylumAssist",
+    description:
+      "Developing a mobile-first platform with the legal team at the Interfaith Center in NYC that guides asylum seekers through the court process and helps them generate legally-sound declaration PDFs with LLMs. Impact: Reduces prep time from weeks to hours, saving $5k–$15k per case.",
+    image: "images/AsylumAssist.png",
+    link: "https://github.com/lucyzimmo/AsylumAssist",
+  },
+  {
     title: "Co-Founder & Lead Engineer",
     company: "SubLine",
     description:
@@ -136,7 +160,7 @@ const jobs = [
     link: "https://www.cisa.gov/",
   },
   {
-    title: "Research Assistant",
+    title: "platform",
     company: "Stanford Human Trafficking Data Lab",
     description:
       "Implemented remote detection algorithms leveraging satellite and geospatial data for pinpointing trafficking hotspots. Collaborated on computer vision models, contributing to ethical applications of AI in global challenges.",
@@ -144,7 +168,7 @@ const jobs = [
     link: "https://htdatalab.stanford.edu/",
   },
   {
-    title: "User Research Assistant, Product and Engineering Team",
+    title: "User platform, Product and Engineering Team",
     company: "Block Party",
     description:
       "Conducted 50+ user interviews to assess product fit and prioritize engineering solutions for harassment prevention tools. Organized beta testing initiatives and recruitment campaigns, driving iterative improvements in user experience.",
@@ -152,7 +176,7 @@ const jobs = [
     link: "https://www.blockparty.com/",
   },
   {
-    title: "Research Assistant",
+    title: "platform",
     company: "Stanford Human-Centered Artificial Intelligence Center",
     description:
       "Delivered 50+ data-driven analyses featured in the 2023 AI Index report, highlighting AI's societal impacts. Explored constraints within AI systems to propose strategies for fostering inclusivity in AI applications.",
@@ -225,7 +249,7 @@ const Portfolio = () => {
             transition={{ delay: 0.2 }}
             className="text-3xl md:text-4xl mb-4 text-[#1F51FF]"
           >
-            AI Safety Researcher & Full-Stack AI Builder
+            Full-Stack AI Builder & Researcher
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -233,11 +257,8 @@ const Portfolio = () => {
             transition={{ delay: 0.4 }}
             className="text-xl md:text-2xl mb-8 text-gray-300 max-w-4xl mx-auto"
           >
-            I&apos;m a Stanford CS Master&apos;s student working on SubLine, an
-            AI research assistant for journalists. I design and deploy
-            full-stack AI applications—from fine-tuning LLMs to building
-            interactive human-in-the-loop platforms—that make AI safer, more
-            interpretable, and impactful for society.
+            I&apos;m an AI engineer and Stanford CS master’s student specializing in applied machine learning, AI safety, and product engineering. My background blends full-stack development and AI research — I&apos;m currently building Sub-Line.com, an AI system that turns decades of news archives into searchable, interpretable intelligence for journalists and researchers — supported by a $125K Brown Institute for Media Innovation Magic Grant.
+            I’m excited by roles that connect cutting-edge AI tools and research to products with real impact, especially in human-AI collaboration.
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
@@ -282,13 +303,13 @@ const Portfolio = () => {
           >
             <p>
               I&apos;m passionate about building AI systems that are reliable,
-              interpretable, and human-centered. My work spans both AI safety
+              interpretable, and human-centered. My work spans both AI
               research and full-stack engineering, from fine-tuning custom NLP
               models to designing interactive platforms for human oversight.
             </p>
             <p>
-              Currently, I&apos;m leading <strong>SubLine</strong>, a full-stack
-              AI research assistant for journalists featuring custom NLP
+              Currently, I&apos;m working on <strong>SubLine</strong>, a full-stack
+              AI platform for journalists featuring custom NLP
               fine-tuning, an interactive graph UI, and human-in-the-loop
               annotation systems.
             </p>
@@ -399,7 +420,11 @@ const Portfolio = () => {
                     <motion.img
                       src={project.image}
                       alt={project.title}
-                      className="object-cover w-full h-full rounded-lg"
+                      className={`object-cover w-full h-full rounded-lg ${
+                        // allow per-project positioning to control crop
+                        // default center if not specified
+                        (project as any).objectPosition || "object-center"
+                      }`}
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.3 }}
                     />

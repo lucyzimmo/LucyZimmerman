@@ -588,6 +588,14 @@ img, video {
   object-fit: cover;
 }
 
+.object-top {
+  object-position: top;
+}
+
+.object-center {
+  object-position: center;
+}
+
 .p-4 {
   padding: 1rem;
 }

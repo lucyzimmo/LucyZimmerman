@@ -3,7 +3,17 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/Card";
 
-const projects = [
+interface Project {
+  title: string;
+  year: string;
+  description: string;
+  image: string;
+  github: string;
+  featured?: boolean;
+  objectPosition?: string;
+}
+
+const projects: Project[] = [
   {
     title: "AsylumAssist",
     year: "January 2025 – Present",
@@ -421,9 +431,7 @@ const Portfolio = () => {
                       src={project.image}
                       alt={project.title}
                       className={`object-cover w-full h-full rounded-lg ${
-                        // allow per-project positioning to control crop
-                        // default center if not specified
-                        (project as any).objectPosition || "object-center"
+                        project.objectPosition || "object-center"
                       }`}
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.3 }}

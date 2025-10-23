@@ -285,7 +285,7 @@ const Portfolio = () => {
               GitHub
             </a>
             <a
-              href="https://www.linkedin.com/in/lucy-zimmerman/"
+              href="https://www.linkedin.com/in/lucyzimmo/"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 border-2 border-[#1F51FF] text-[#1F51FF] rounded-lg hover:bg-[#1F51FF] hover:text-white transition-colors"

@@ -35,7 +35,7 @@ const PROJECT_THEMES: ProjectTheme[] = [
 ];
 
 const projects: Project[] = [
-  { title: "SubLine", description: "AI platform for journalists: knowledge graphs, entity extraction, and human-in-the-loop annotation.", github: "https://github.com/akanshyabhat/backgroundbuddy", tags: ["Journalism", "NLP/LLMs", "React"] },
+  { title: "SubLine", description: "AI platform for journalists: knowledge graphs, entity extraction, and human-in-the-loop annotation.", github: "https://github.com/akanshyabhat/backgroundbuddy", tags: ["Journalism", "NLP/LLMs", "React", "AI Research"] },
   { title: "Navigator", description: "Mobile platform that guides asylum seekers through the legal process and helps generate declaration PDFs with AI.", github: "https://github.com/lucyzimmo/AsylumAssist", tags: ["Human rights", "Legal tech", "NLP/LLMs", "React"] },
   { title: "The Quad", description: "A prediction market for the Stanford community.", github: "https://github.com/lucyzimmo/the-quad", tags: ["Fintech", "React"] },
   { title: "TransparencyGPT", description: "Mobile AI app for explainable bias detection in journalism; selected for Dorm Room Fund.", github: "https://docs.google.com/presentation/d/1FenouPHBdPi9fJLOlw4dqXsBvWRs2eVi/edit?usp=sharing&ouid=109088702521409839637&rtpof=true&sd=true", tags: ["Journalism", "NLP/LLMs", "React"] },
@@ -46,8 +46,8 @@ const projects: Project[] = [
   { title: "Improving MinBERT", description: "Contrastive learning research: minBERT embeddings with SimCSE for NLP tasks.", github: "https://github.com/CS224N-RL-LZ-JK/miniBert", tags: ["AI research", "NLP/LLMs"] },
   { title: "Stanford HAI", description: "AI Index report: researched harms and biases in generative AI.", github: "https://hai.stanford.edu/", tags: ["AI safety", "AI research"] },
   { title: "TAG", description: "An app for prioritizing meaningful conversations.", github: "https://devpost.com/software/tag-bhw52e#updates", tags: ["React"] },
-  { title: "ReadTheRoom", description: "Researching Context Adaptive Pluralistic Alignment for Constructive Discourse", github: "https://github.com/lucyzimmo/readtheroom", tags: ["AI research", "NLP/LLMs"] },
-  { title: "Political Bias in RAG", description: "A comprehensive research pipeline to evaluate how LLMs resolve conflicts between ideologically opposed sources in RAG.", github: "https://github.com/lucyzimmo/ideological-conflict-rag", tags: ["AI research", "NLP/LLMs"] },
+  { title: "ReadTheRoom", description: "Researching Context Adaptive Pluralistic Alignment for Constructive Discourse", github: "https://github.com/lucyzimmo/readtheroom", tags: ["AI safety", "AI research", "NLP/LLMs"] },
+  { title: "Political Bias in RAG", description: "A comprehensive research pipeline to evaluate how LLMs resolve conflicts between ideologically opposed sources in RAG.", github: "https://github.com/lucyzimmo/ideological-conflict-rag", tags: ["AI safety", "AI research", "NLP/LLMs"] },
   { title: "The Pacific", description: "Built out a social layer for the Atlantic", github: "https://github.com/lucyzimmo/ThePacific", tags: ["React", "Journalism"] },
 ];
 

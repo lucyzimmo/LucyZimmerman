@@ -3,7 +3,6 @@ node_modules
 /.next
 # Next.js
 .next/
-out/
 
 # Mac
 .DS_Store

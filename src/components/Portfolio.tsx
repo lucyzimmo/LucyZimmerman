@@ -1,690 +1,444 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Card } from "@/components/ui/Card";
+import { useState } from "react";
+
+type ProjectTheme =
+  | "AI research"
+  | "AI safety"
+  | "Computer Vision"
+  | "NLP/LLMs"
+  | "ML"
+  | "React"
+  | "Human rights"
+  | "Journalism"
+  | "Legal tech"
+  | "Fintech";
 
 interface Project {
   title: string;
-  year: string;
   description: string;
-  image: string;
   github: string;
-  featured?: boolean;
-  objectPosition?: string;
+  tags: ProjectTheme[];
 }
 
+const PROJECT_THEMES: ProjectTheme[] = [
+  "AI research",
+  "AI safety",
+  "Computer Vision",
+  "NLP/LLMs",
+  "ML",
+  "React",
+  "Human rights",
+  "Journalism",
+  "Legal tech",
+  "Fintech",
+];
+
 const projects: Project[] = [
-  {
-    title: "AsylumAssist",
-    year: "January 2025 – Present",
-    description:
-      "Founding Full-Stack AI Engineer developing a mobile-first platform with the legal team at the Interfaith Center in NYC that guides asylum seekers through the court process and helps them generate legally-sound declaration PDFs with LLMs. Built with React.js, Node.js/Express, PostgreSQL, and Supabase with offline-first syncing. Impact: Reduces prep time from weeks to hours, saving $5k–$15k per case.",
-    image: "images/AsylumAssist.png",
-    objectPosition: "object-top",
-    github: "https://github.com/lucyzimmo/AsylumAssist",
-    featured: true,
-  },
-  {
-    title: "SubLine (Background Buddy)",
-    year: "2024–present",
-    description:
-      "Full-stack AI platform for journalists. Built custom NLP models (entity + relation extraction with RE-DocRED finetuning), designed a human-in-the-loop annotation platform, and developed an interactive graph UI for exploring knowledge. Currently leading pilots with newsrooms.",
-    image: "images/KG.png",
-    github: "https://github.com/akanshyabhat/backgroundbuddy",
-    featured: true,
-  },
-  {
-    title: "The Quad",
-    year: "2024",
-    description: "A prediction market for the Stanford community",
-    image: "images/Quad.png",
-    github: "https://github.com/lucyzimmo/the-quad",
-  },
-  {
-    title: "TransparencyGPT",
-    year: "2023",
-    description:
-      "Mobile AI app for explainable bias detection in journalism. Designed retrieval + bias-aware LLM pipeline and deployed a production React/Flask app. Selected for Dorm Room Fund Female Founder Track.",
-    image: "images/TG.png",
-    github:
-      "https://docs.google.com/presentation/d/1FenouPHBdPi9fJLOlw4dqXsBvWRs2eVi/edit?usp=sharing&ouid=109088702521409839637&rtpof=true&sd=true",
-  },
-  {
-    title: "F*** This App",
-    year: "2023",
-    description:
-      "A Mobile app developed to help users break addictions and bad habits.",
-    image: "images/F-This.png",
-    github: "https://www.youtube.com/watch?v=_chaWwF3OZw",
-  },
-  {
-    title: "Food Insecurity Planning Model",
-    year: "2023",
-    description:
-      "A Machine learning model for optimal food bank distribution in high-need areas.",
-    image: "images/FoodBank.png",
-    github: "https://github.com/lucyzimmo/Food-Planning-Model",
-  },
-  {
-    title: "Smart Connections",
-    year: "2023",
-    description:
-      "A Deep Q-learning agent designed to solve the NYT Connections Puzzle.",
-    image: "images/SC.png",
-    github: "https://github.com/lucyzimmo/SmartConnections",
-  },
-  {
-    title: "Human Trafficking Lab",
-    year: "2022–2023",
-    description:
-      "Developed computer vision + geospatial ML pipeline using satellite imagery to detect trafficking zones in the Amazon. Integrated outputs into deployable dashboards for NGOs.",
-    image: "images/HT.jpg",
-    github: "https://htdatalab.stanford.edu/",
-  },
-  {
-    title: "MinBERT + SimCSE",
-    year: "2021–2022",
-    description:
-      "Contrastive learning research project. Built minBERT-based embedding system with SimCSE, improving sentiment classification, semantic similarity, and paraphrase detection tasks by stabilizing training with cycling iterators, weighted losses, and dropout.",
-    image: "images/minBERT.png",
-    github: "https://github.com/CS224N-RL-LZ-JK/miniBert",
-  },
-  {
-    title: "Stanford HAI (AI Index)",
-    year: "2023",
-    description:
-      "Researched harms and biases in generative AI, co-authoring the widely read AI Index report (cited by policymakers, academics, and industry leaders).",
-    image: "images/Hai.png",
-    github: "https://hai.stanford.edu/",
-  },
-  {
-    title: "TAG",
-    year: "2023",
-    description: "An app for prioritizing meaningful conversations",
-    image: "images/TAG.png",
-    github: "https://devpost.com/software/tag-bhw52e#updates",
-  },
+  { title: "SubLine", description: "AI platform for journalists: knowledge graphs, entity extraction, and human-in-the-loop annotation.", github: "https://github.com/akanshyabhat/backgroundbuddy", tags: ["Journalism", "NLP/LLMs", "React"] },
+  { title: "Navigator", description: "Mobile platform that guides asylum seekers through the legal process and helps generate declaration PDFs with AI.", github: "https://github.com/lucyzimmo/AsylumAssist", tags: ["Human rights", "Legal tech", "NLP/LLMs", "React"] },
+  { title: "The Quad", description: "A prediction market for the Stanford community.", github: "https://github.com/lucyzimmo/the-quad", tags: ["Fintech", "React"] },
+  { title: "TransparencyGPT", description: "Mobile AI app for explainable bias detection in journalism; selected for Dorm Room Fund.", github: "https://docs.google.com/presentation/d/1FenouPHBdPi9fJLOlw4dqXsBvWRs2eVi/edit?usp=sharing&ouid=109088702521409839637&rtpof=true&sd=true", tags: ["Journalism", "NLP/LLMs", "React"] },
+  { title: "F*** This App", description: "Mobile app to help users break addictions and bad habits.", github: "https://www.youtube.com/watch?v=_chaWwF3OZw", tags: ["React"] },
+  { title: "Food Insecurity Model", description: "ML model for optimal food bank distribution in high-need areas.", github: "https://github.com/lucyzimmo/Food-Planning-Model", tags: ["ML"] },
+  { title: "Smart Connections", description: "Deep Q-learning agent that solves the NYT Connections puzzle.", github: "https://github.com/lucyzimmo/SmartConnections", tags: ["ML", "NLP/LLMs"] },
+  { title: "Human Trafficking Data Lab", description: "Computer vision + geospatial ML to detect trafficking zones from satellite imagery.", github: "https://htdatalab.stanford.edu/", tags: ["Computer Vision", "Human rights", "ML"] },
+  { title: "Improving MinBERT", description: "Contrastive learning research: minBERT embeddings with SimCSE for NLP tasks.", github: "https://github.com/CS224N-RL-LZ-JK/miniBert", tags: ["AI research", "NLP/LLMs"] },
+  { title: "Stanford HAI", description: "AI Index report: researched harms and biases in generative AI.", github: "https://hai.stanford.edu/", tags: ["AI safety", "AI research"] },
+  { title: "TAG", description: "An app for prioritizing meaningful conversations.", github: "https://devpost.com/software/tag-bhw52e#updates", tags: ["React"] },
+  { title: "ReadTheRoom", description: "Researching Context Adaptive Pluralistic Alignment for Constructive Discourse", github: "https://github.com/lucyzimmo/readtheroom", tags: ["AI research", "NLP/LLMs"] },
+  { title: "Political Bias in RAG", description: "A comprehensive research pipeline to evaluate how LLMs resolve conflicts between ideologically opposed sources in RAG.", github: "https://github.com/lucyzimmo/ideological-conflict-rag", tags: ["AI research", "NLP/LLMs"] },
+  { title: "The Pacific", description: "Built out a social layer for the Atlantic", github: "https://github.com/lucyzimmo/ThePacific", tags: ["React", "Journalism"] },
 ];
 
-const timeline = [
-  {
-    year: "2025–present",
-    title: "AsylumAssist",
-    description:
-      "Founding Full-Stack AI Engineer building mobile platform to guide asylum seekers through legal process.",
-  },
-  {
-    year: "2024–present",
-    title: "SubLine",
-    description:
-      "Leading development of full-stack AI platform for newsrooms.",
-  },
-  {
-    year: "2023",
-    title: "TransparencyGPT",
-    description:
-      "Built explainable bias detection app, selected for Dorm Room Fund.",
-  },
-  {
-    year: "2023",
-    title: "Stanford HAI",
-    description:
-      "Contributing to AI Index harms chapter, bridging technical work and policy.",
-  },
-  {
-    year: "2022–2023",
-    title: "Human Trafficking Lab",
-    description:
-      "Built ML pipeline for satellite imagery + trafficking detection.",
-  },
-  {
-    year: "2021–2022",
-    title: "minBERT/SimCSE Research",
-    description: "Improved embeddings for multiple NLP downstream tasks.",
-  },
+type Tab = "about" | "built" | "dreams";
+
+/* Organic cluster: loose, floating thought-bubble positions (no grid). Size: s | m | l for rhythm. */
+const cloudPositions: { left: string; top: string; size: "s" | "m" | "l" }[] = [
+  { left: "50%", top: "6%", size: "m" },
+  { left: "22%", top: "11%", size: "s" },
+  { left: "76%", top: "14%", size: "l" },
+  { left: "38%", top: "18%", size: "l" },
+  { left: "62%", top: "22%", size: "s" },
+  { left: "14%", top: "26%", size: "m" },
+  { left: "72%", top: "28%", size: "s" },
+  { left: "48%", top: "34%", size: "m" },
+  { left: "28%", top: "40%", size: "l" },
+  { left: "66%", top: "38%", size: "s" },
+  { left: "54%", top: "44%", size: "m" },
+  { left: "32%", top: "50%", size: "s" },
+  { left: "70%", top: "52%", size: "m" },
+  { left: "46%", top: "58%", size: "l" },
 ];
 
-const jobs = [
-  {
-    title: "Founding Full-Stack AI Engineer",
-    company: "AsylumAssist",
-    description:
-      "Developing a mobile-first platform with the legal team at the Interfaith Center in NYC that guides asylum seekers through the court process and helps them generate legally-sound declaration PDFs with LLMs. Impact: Reduces prep time from weeks to hours, saving $5k–$15k per case.",
-    image: "images/AsylumAssist.png",
-    link: "https://github.com/lucyzimmo/AsylumAssist",
-  },
-  {
-    title: "Co-Founder & Lead Engineer",
-    company: "SubLine",
-    description:
-      "Building an AI platform for news organizations. Leading custom NLP model development, human-in-the-loop annotation platform, and interactive knowledge graph UI.",
-    image: "images/subline.png",
-    link: "https://www.sub-line.com/",
-  },
-  {
-    title: "CS + Social Good Fellow",
-    company: "C.I.S.A.",
-    description:
-      "Lead Research Intern for Senior Advisor for Technology and Innovation focused on AI + Human Rights.",
-    image: "images/CISA.webp",
-    link: "https://www.cisa.gov/",
-  },
-  {
-    title: "platform",
-    company: "Stanford Human Trafficking Data Lab",
-    description:
-      "Implemented remote detection algorithms leveraging satellite and geospatial data for pinpointing trafficking hotspots. Collaborated on computer vision models, contributing to ethical applications of AI in global challenges.",
-    image: "images/HT.jpg",
-    link: "https://htdatalab.stanford.edu/",
-  },
-  {
-    title: "User platform, Product and Engineering Team",
-    company: "Block Party",
-    description:
-      "Conducted 50+ user interviews to assess product fit and prioritize engineering solutions for harassment prevention tools. Organized beta testing initiatives and recruitment campaigns, driving iterative improvements in user experience.",
-    image: "images/BP.png",
-    link: "https://www.blockparty.com/",
-  },
-  {
-    title: "platform",
-    company: "Stanford Human-Centered Artificial Intelligence Center",
-    description:
-      "Delivered 50+ data-driven analyses featured in the 2023 AI Index report, highlighting AI's societal impacts. Explored constraints within AI systems to propose strategies for fostering inclusivity in AI applications.",
-    image: "images/Hai.png",
-    link: "https://hai.stanford.edu/",
-  },
-  {
-    title: "Software Engineer",
-    company: "WiseTech Global",
-    description:
-      "Modernized software architecture for logistics platforms, coding over 2,000 lines and integrating scalable infrastructure. Supported operational systems for top global freight forwarders, improving efficiency and reliability.",
-    image: "images/WT.jpg",
-    link: "https://www.wisetechglobal.com/",
-  },
-  {
-    title: "Product Engineer",
-    company: "Presien",
-    description:
-      "Built Blindsight, a safety solution for industrial environments powered by AI vision.",
-    image: "images/Presien.png",
-    link: "https://www.presien.com/",
-  },
+/* Cloud-like border-radius variants (irregular blob shapes) */
+const cloudShapes = [
+  "60% 40% 50% 50% / 50% 60% 40% 50%",
+  "50% 60% 40% 50% / 60% 40% 50% 50%",
+  "40% 50% 60% 40% / 50% 50% 40% 60%",
+  "55% 45% 55% 45% / 45% 55% 45% 55%",
 ];
 
-const Navbar = () => {
+/* About me - your SVG (thinner strokes, extra top space so head isn't cut off) */
+function AboutStickFigure() {
   return (
-    <nav className="flex justify-between items-center p-4 bg-[#1a1a2e] text-[#eaeaea]">
-      <div className="text-2xl font-bold">Lucy Zimmerman</div>
-      <div className="space-x-4">
-        <a href="#about" className="hover:text-[#1F51FF]">
-          About
-        </a>
-        <a href="#current-work" className="hover:text-[#1F51FF]">
-          Current Work
-        </a>
-        <a href="#projects" className="hover:text-[#1F51FF]">
-          Projects
-        </a>
-        <a href="#skills" className="hover:text-[#1F51FF]">
-          Skills
-        </a>
-        <a href="#timeline" className="hover:text-[#1F51FF]">
-          Timeline
-        </a>
-        <a href="#experience" className="hover:text-[#1F51FF]">
-          Experience
-        </a>
-      </div>
-    </nav>
+    <svg viewBox="-15 -40 495 1020" className="w-full max-w-[200px] mx-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M230.061 1C313.747 1 381.561 67.7251 381.561 150C381.561 232.275 313.747 299 230.061 299C146.374 299 78.5605 232.275 78.5605 150C78.5605 67.7251 146.374 1 230.061 1Z" stroke="black" strokeWidth="6"/>
+      <path d="M229.39 300.307C229.39 300.877 229.39 301.446 228.975 396.612C228.559 491.778 227.729 681.524 226.906 780.785C226.058 883.082 223.93 888.816 223.098 897.093C222.815 911.351 222.239 924.612 221.269 933.036C220.876 937.064 220.683 940.59 220.021 948.762" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M1 561.815C1.17628 561.815 1.35255 561.815 69.4812 566.21C137.61 570.606 273.686 579.396 350.77 585.749C427.855 592.103 441.825 595.754 456.218 599.516" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M224.562 702.159C231.822 705.292 265.723 731.793 308.763 773.02C330.02 793.382 347.463 815.27 369.042 843.77C390.62 872.271 415.132 907.401 430.732 928.686C446.331 949.972 452.273 956.348 463.84 966.513" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M161.858 103.033C161.858 103.609 161.858 108.164 162.921 115.583C163.394 118.884 166.109 120.68 168.555 121.843C173.396 124.145 179.188 123.511 183.287 121.886C185.162 121.143 184.694 117.696 183.651 115.322C182.609 112.948 180.514 111.019 178.159 109.51C175.803 108.001 173.25 106.971 169.131 105.56" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M285.94 103.824C281.501 103.824 271.785 105.353 268.118 109.256C264.221 113.403 266.318 121.53 266.817 127.135C267.027 129.496 270.35 130.014 274.256 128.998C283.813 126.512 291.853 121.213 296.47 118.174C297.968 116.247 297.751 113.538 295.77 111.634C293.789 109.73 290.049 108.713 280.814 106.412" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M164.19 167.123C164.369 171.712 171.541 193.942 181.723 208.648C194.574 227.21 224.441 221.732 241.18 216.578C263.887 202.122 279.646 192.377 287.694 183.323C289.481 180.603 291.182 177.338 294.209 172.331" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+    </svg>
   );
-};
+}
 
-const Portfolio = () => {
+/* Meditating - your SVG (thinner strokes, extra top space so head isn't cut off) */
+function MeditatingStickFigure() {
   return (
-    <div className="min-h-screen bg-[#1a1a2e] text-white-500">
-      <Navbar />
-      {/* Hero Section */}
-      <section className="h-screen flex items-center justify-center px-4">
-        <div className="text-center">
-          <motion.h1
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            className="text-6xl md:text-7xl font-bold mb-6 text-white"
-          >
-            Lucy Zimmerman
-          </motion.h1>
-          <motion.h2
-            initial={{ y: -30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-3xl md:text-4xl mb-4 text-[#1F51FF]"
-          >
-            Full-Stack AI Builder & Researcher
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-xl md:text-2xl mb-8 text-gray-300 max-w-4xl mx-auto"
-          >
-            I&apos;m an AI engineer and Stanford CS master’s student specializing in applied machine learning, AI safety, and product engineering. My background blends full-stack development and AI research — I&apos;m currently building Sub-Line.com, an AI system that turns decades of news archives into searchable, interpretable intelligence for journalists and researchers — supported by a $125K Brown Institute for Media Innovation Magic Grant.
-            I’m excited by roles that connect cutting-edge AI tools and research to products with real impact, especially in human-AI collaboration.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="flex gap-4 justify-center"
-          >
-            <a
-              href="https://github.com/lucyzimmo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-[#1F51FF] text-white rounded-lg hover:bg-[#1a45cc] transition-colors"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/lucyzimmo/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 border-2 border-[#1F51FF] text-[#1F51FF] rounded-lg hover:bg-[#1F51FF] hover:text-white transition-colors"
-            >
-              LinkedIn
-            </a>
-          </motion.div>
-        </div>
-      </section>
+    <svg viewBox="-15 -40 546 835" className="w-full max-w-[180px] mx-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M248.371 1C332.057 1 399.871 67.7251 399.871 150C399.871 232.275 332.057 299 248.371 299C164.684 299 96.8706 232.275 96.8706 150C96.8706 67.7251 164.684 1 248.371 1Z" stroke="black" strokeWidth="6"/>
+      <path d="M180.168 103.033C180.168 103.609 180.168 108.164 181.231 115.583C181.704 118.884 184.419 120.68 186.865 121.843C191.706 124.145 197.498 123.511 201.597 121.886C203.472 121.143 203.004 117.696 201.961 115.322C200.919 112.948 198.824 111.019 196.469 109.51C194.113 108.001 191.56 106.971 187.441 105.56" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M304.25 103.824C299.811 103.824 290.095 105.353 286.428 109.256C282.531 113.403 284.628 121.53 285.127 127.135C285.337 129.496 288.66 130.014 292.566 128.998C302.123 126.512 310.163 121.213 314.78 118.174C316.278 116.247 316.061 113.538 314.08 111.634C312.099 109.73 308.36 108.713 299.124 106.412" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M182.5 167.123C182.679 171.712 189.851 193.942 200.033 208.648C212.884 227.21 242.751 221.732 259.49 216.578C282.197 202.122 297.956 192.377 306.004 183.323C307.791 180.603 309.492 177.338 312.52 172.331" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M243.895 304.478C243.895 305.339 243.681 345.597 243.107 407.897C242.244 434.332 240.968 442.225 238.838 451.105C237.467 456.161 235.507 462.335 233.139 472.567" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M237.803 462.809C237.606 462.809 232.285 464.788 191.326 491.256C154.94 514.77 89.4912 562.682 60.9159 588.516C32.3406 614.35 43.2902 617.659 58.2854 624.858C73.2806 632.058 91.9897 643.048 121.818 664.368C151.647 685.688 192.028 717.004 234.197 749.269" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M243.741 462.921C244.527 462.921 291.554 475.159 368.505 496.64C432.968 514.635 449.89 532.284 465.766 539.838C469.963 541.835 473.587 544.776 456.995 569.082C440.403 593.388 403.294 639.332 381.163 664.676C342.934 699.689 321.128 718.095 303.285 731.697C299.837 734.39 296.65 737.499 290.327 745.848" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M237.279 382.528C234.103 383.976 207.279 406.366 165.377 449.623C119.509 496.976 98.2954 537.107 86.5833 553.753C61.0766 590.005 41.471 599.565 30.1869 608.717C25.2471 611.984 19.7065 613.661 13.17 614.144C9.70466 614.308 5.93843 614.308 1 610.487" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M247.778 369.801C247.778 369.991 270.178 392.672 311.268 432.365C342.416 462.453 362.378 475.054 377.349 486.341C429.684 525.798 462.25 536.19 483.111 544.924C490.73 545.278 498.358 542.73 505.034 537.804C508.144 535.363 510.69 533.041 514.135 530.084" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M232.854 745.857C232.999 752.56 234.979 770.711 240.843 782.597C245.134 791.294 254.966 792.635 259.882 793.477C262.266 793.885 264.537 793.352 265.777 789.656C269.233 779.358 266.263 768.363 263.033 762.25C260.9 759.371 257.766 756.944 253.372 754.279C248.978 751.613 243.42 748.782 236.92 745.279" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M292.93 747.15C290.713 745.806 281.996 744.035 275.215 745.255C265.029 747.087 270.069 768.761 271.081 781.188C271.467 785.931 274.116 787.123 276.402 787.921C278.687 788.719 281.172 788.99 283.429 788.608C285.686 788.225 287.64 787.181 289.744 785.022C291.848 782.864 294.043 779.622 295.229 773.679C296.415 767.736 296.525 759.191 296.639 750.387" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+    </svg>
+  );
+}
 
-      {/* About Section */}
-      <section id="about" className="min-h-screen flex items-center justify-center px-4 py-20">
-        <div className="max-w-4xl">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-5xl font-bold mb-8 text-center text-white"
-          >
-            About
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-xl text-gray-300 space-y-6"
-          >
-            <p>
-              I&apos;m passionate about building AI systems that are reliable,
-              interpretable, and human-centered. My work spans both AI
-              research and full-stack engineering, from fine-tuning custom NLP
-              models to designing interactive platforms for human oversight.
-            </p>
-            <p>
-              Currently, I&apos;m working on <strong>SubLine</strong>, a full-stack
-              AI platform for journalists featuring custom NLP
-              fine-tuning, an interactive graph UI, and human-in-the-loop
-              annotation systems.
-            </p>
-            <p>
-              My past work includes <strong>TransparencyGPT</strong> (bias
-              detection app selected for Dorm Room Fund), research at{" "}
-              <strong>Stanford HAI</strong> on AI harms, and computer vision +
-              geospatial ML at the <strong>Human Trafficking Lab</strong>.
-            </p>
-            <p>
-              <strong>Core philosophy:</strong> AI must be reliable,
-              interpretable, and human-centered to create meaningful impact for
-              society.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+/* Sleeping - your SVG (thinner strokes, extra space so not cut off at top) */
+function SleepingStickFigure() {
+  return (
+    <svg viewBox="-25 -55 1202 816" className="w-full max-w-[180px] mx-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M41.7839 356.745C41.7839 356.974 41.7839 357.204 38.8335 403.1C35.8831 448.995 29.9824 540.551 26.289 590.99C19.0687 658.429 8.27859 708.675 2.6347 741.798C2.26392 745.34 1.8456 748.526 1.00018 753.027" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M44.3435 367.288C44.4682 367.288 44.5929 367.288 88.1885 360.342C131.784 353.395 218.847 339.502 310.577 331.444C402.307 323.386 496.067 321.584 547.98 319.075C607.116 313.405 618.453 309.693 635.142 308.988C647.938 308.738 669.517 308.706 691.751 308.672" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M3.04791 754.355C4.02935 754.355 5.0108 754.355 147.512 747.551C290.012 740.748 574.003 727.14 722.891 720.44C871.78 713.74 876.96 714.359 881.172 715.051C885.383 715.742 888.468 716.486 891.55 717.39C894.631 718.294 897.616 719.336 901.276 720.543" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M687.631 311.646C687.736 311.646 687.84 311.646 725.844 311.646C763.849 311.646 839.75 311.646 878.886 342.502C918.023 373.357 918.095 435.067 915.993 477.856C912.798 542.878 904.557 575.496 903.234 592.552C899.984 635.996 897.008 700.075 895.645 706.45C894.906 709.66 894.069 712.817 891.988 718.216" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M621.068 318.728C631.95 323.797 684.725 345.374 710.118 357.162C713.765 358.854 715.678 363.514 716.952 367.534C719.49 375.545 714.148 385.498 706.842 394.585C694.854 409.495 672.584 414.442 655.012 418.129C651.092 418.952 650.501 425.072 650.585 430.572C650.921 452.778 672.625 467.527 685.158 478.813C690.287 483.432 688.418 495.655 686.566 508.113C683.42 529.266 663.136 543.829 642.882 553.524C639.581 555.105 652.861 560.454 665.866 565.997C683.456 573.492 691.349 596.136 697.815 618.706C701.752 632.45 698.361 645.025 695.029 652.9C683.986 665.568 671.626 680.528 656.625 697.255C650.981 701.927 642.732 707.933 625.346 716.936" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M847.186 446.493C827.223 446.493 780.078 447.329 763.823 452.841C745.169 459.166 728.951 482.332 718.623 498.202C714.385 504.715 714.854 513.096 717.947 520.81C735.152 563.715 814.971 571.632 835.234 574.081C846.327 575.422 856.84 569.058 864.967 561.72C882.426 545.956 888.807 504.979 890.352 480.961C890.653 476.271 888.22 473.435 885.82 470.916C880.174 466.313 868.954 461.998 851.013 458.553C840.949 457.275 828.934 456.953 816.556 456.622" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M690.556 508.922H719.261" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M840.015 476.744C839.283 481.087 836.317 494.49 834.217 499.743C833.597 499.694 833.883 494.136 834.46 489.383C835.038 484.631 835.898 480.854 837.565 475.415" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M820.659 551.961C820.659 551.502 820.659 544.529 820.659 539.861C820.659 537.791 820.659 553.013 820.659 554.653C820.659 556.293 820.659 548.156 820.511 542.188C820.362 536.22 820.064 532.669 819.392 528.363" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M775.232 493.966C774.367 496.999 770.677 509.303 770.969 522.33C772.421 524.991 775.606 526.604 779.48 527.481C783.353 528.358 787.818 528.451 795.282 527.485" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M926.507 414.971C926.748 414.971 922.689 417.087 916.629 421.962C914.028 424.053 915.306 428.059 917.292 431.422C919.277 434.785 922.676 438.071 927.212 439.891C936.788 443.732 946.366 440.813 952.761 437.127C959.646 433.16 963.025 425.513 965.502 419.29C966.721 416.228 966.692 412.959 965.371 409.715C962.455 402.558 955.044 398.619 948.851 397.104C942.738 397.847 935.725 402.525 928.964 409.48C926.113 412.729 924.44 415.412 922.716 418.177" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M971.252 364.936C995.52 364.71 1045 363.658 1050.85 361.575C1053.81 360.522 1055.97 357.727 1056.95 354.087C1059.15 345.876 1051.98 329.972 1042.05 313.062C1038 306.166 1032.3 305.194 1026.95 304.812C1015.86 304.019 1001.58 312.429 987.419 323.6C978.445 332.053 973.725 340.035 971.45 350.036C970.675 355.661 970.671 362.402 979.882 370.543" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M1031.88 182.531C1030.07 185.68 1027.54 204.053 1028.57 223.282C1028.97 230.644 1032.9 232.693 1037.85 234.559C1049.3 238.879 1073.42 239.553 1100.21 237.462C1110.42 236.666 1112.95 230.931 1114.5 226.694C1120.19 211.184 1112.24 194.3 1104.21 181.123C1094.32 164.891 1059.46 162.282 1037.17 163.855C1032.06 165.509 1027.54 168.514 1023.75 171.562C1019.96 174.61 1017.04 177.611 1011.55 184.859" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+      <path d="M1048.59 29.6713C1052.66 34.1637 1088.55 59.5491 1114.28 69.0455C1132.55 75.7877 1148.31 44.9439 1150.32 36.8282C1152.7 27.2268 1143.28 18.426 1135.94 12.3424C1107.75 -11.0147 1053.27 7.9562 1046.91 14.0887C1044.18 17.1322 1042.45 20.0363 1040.92 23.3062C1039.39 26.576 1038.11 30.1237 1039.79 39.3735" stroke="black" strokeWidth="6" strokeLinecap="round"/>
+    </svg>
+  );
+}
 
-      {/* What I'm Working On Section */}
-      <section id="current-work" className="min-h-screen flex items-center justify-center px-4 py-20 bg-[#0f0f1e]">
-        <div className="max-w-5xl">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-5xl font-bold mb-12 text-center text-white"
+/* Surfing - your SVG */
+function MiniSurfing() {
+  return (
+    <svg viewBox="0 0 930 1050" className="inline-block w-12 h-14 align-middle" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M399.474 337.584C399.118 348.64 392.399 391.306 369.904 444.61C343.344 507.55 325.035 564.901 322.866 678.723C321.782 735.594 351.42 789.935 379.897 831.021C425.186 896.364 533.926 937.921 582.893 952.772C592.637 953.306 605.497 953.63 617.317 955.027C629.136 956.423 639.525 958.881 657.223 964.831" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M403.454 358.113C396.954 359.143 373.981 369.104 341.336 401.551C332.922 409.914 327.249 418.172 280.053 508.581C232.856 598.99 144.786 771.843 97.4542 863.983C50.122 956.123 46.1964 962.313 37.7997 978.114C29.4029 993.914 16.654 1019.14 1.00018 1048.89" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M363.719 754.118C364.966 754.118 443.17 729.179 572.039 686.598C646.785 661.9 693.818 644.895 744.642 637.759C832.922 625.364 891.079 663.977 922.687 694.98C950.962 722.713 872.897 783.492 836.48 807.562C751.71 863.592 682.423 862.021 605.965 880.054C563.87 887.024 515.808 889.799 469.373 890.087C448.858 890.375 434.536 890.951 419.78 891.545" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M657.133 234.404C656.539 252.205 641.502 389.675 620.859 501.952C605.324 586.452 594.811 639.872 552.227 687.658C539.569 698.375 527.762 711.542 520.055 720.999C512.348 730.455 509.098 735.801 499.048 756.896" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M587.94 615.29C588.103 615.955 605.337 641.926 632.89 684.242C646.433 707.898 654.231 723.134 663.109 737.713C667.423 744.236 671.348 748.982 675.393 753.872" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M528.483 436.685C527.994 436.15 579.279 435.606 672.582 433.014C744.781 426.317 786.072 421.811 809.75 421.536C823.492 421.26 840.738 420.708 858.506 420.14" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M650.792 1C644.04 4.20458 583.174 55.0881 542.765 100.229C533.371 110.724 535.111 127.514 539.64 143.806C556.566 204.701 647.407 240.106 691.983 258.537C715.178 268.128 737.694 255.997 752.475 243C767.876 229.459 774.494 208.736 779.266 189.364C789.407 148.194 748.58 95.1052 717.734 46.3368C712.032 38.1692 706.125 32.7335 699.175 29.2276C692.225 25.7216 684.41 24.3099 669.523 21.233" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M596.665 82.8169C596.665 83.9203 602.431 86.5331 614.536 88.6004C620.8 89.6701 627.614 86.5626 632.695 82.2154C637.776 77.8681 640.997 71.2967 640.211 65.6642C639.425 60.0316 634.535 55.5371 628.427 53.1163C622.32 50.6955 615.144 50.4845 608.695 53.8522C602.245 57.2199 596.739 64.1726 587.85 79.5226" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M685.107 68.459C684.662 68.459 678.919 75.363 671.856 88.6186C668.829 94.2986 672.889 100.56 677.273 103.886C686.457 110.853 699.934 109.023 709.47 105.807C713.128 102.59 714.39 96.1563 712.528 91.0004C710.666 85.8446 705.642 82.1613 687.828 77.3831" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M634.398 129.355C633.523 129.355 627.224 129.988 618.431 135.778C593.731 152.042 637.644 199.033 652.493 228.069C658.406 239.631 676.521 233.393 688.816 228.445C702.613 222.893 711.284 206.544 718.725 194.529C722.168 188.971 720.919 182.093 718.456 176.225C700.987 157.315 669.949 147.508 640.463 135.523C633.815 132.457 627.025 129.585 620.029 126.626" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+    </svg>
+  );
+}
+/* Chef - your SVG */
+function MiniCooking() {
+  return (
+    <svg viewBox="0 0 637 962" className="inline-block w-10 h-14 align-middle" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M142.212 209.001C220.394 209.001 283.424 261.017 283.424 324.789C283.424 388.561 220.394 440.576 142.212 440.576C64.0297 440.576 1.00029 388.561 1 324.789C1 261.017 64.0295 209.001 142.212 209.001Z" stroke="black" strokeWidth="20"/>
+      <path d="M141.586 441.815C141.586 442.259 141.586 442.702 141.199 516.797C140.812 590.892 140.037 738.625 139.27 815.908C138.479 895.555 136.495 900.019 135.719 906.464C135.455 917.564 134.918 927.889 134.014 934.448C133.647 937.584 133.467 940.329 132.85 946.693" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M137.084 754.691C143.855 757.13 175.469 777.764 215.605 809.862C235.428 825.716 251.694 842.757 271.817 864.947C291.94 887.137 314.799 914.489 329.345 931.062C343.892 947.634 349.434 952.599 360.22 960.513" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M80.7849 338.121C80.9525 341.694 87.6404 359.002 97.1353 370.452C109.12 384.904 136.971 380.638 152.582 376.626C173.756 365.371 188.452 357.783 195.957 350.734C197.623 348.616 199.21 346.074 202.033 342.176" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M44.0804 228.567C44.0804 227.741 44.2452 212.651 45.7687 170.849C46.7581 143.702 49.6745 104.549 52.0215 80.4355C56.3039 36.4348 64.0573 24.6948 71.4084 17.5988C73.1903 15.8787 76.2712 15.7763 78.6551 17.9062C85.1893 23.744 86.2726 32.9255 88.919 37.5028C91.0881 41.2548 107.487 23.2012 122.235 14.604C126.756 11.9682 132.295 23.1578 138.078 30.8783C139.29 32.4961 143.013 31.2777 145.323 29.8358C150.235 26.7691 155.321 19.2226 163.18 12.8914C166.337 10.3479 169.396 10.7463 171.178 11.9165C175.059 14.4653 175.135 20.4282 176.673 25.3603C177.423 27.7625 179.215 29.6714 183.535 26.1447C197.071 15.0946 203.881 2.46292 207.531 1.16744C212.611 -0.636111 215.249 12.5293 218.288 21.47C219.435 24.8447 222.902 24.8312 225.483 24.4163C236.067 22.7148 241.743 12.4144 250.051 6.71294C259.471 0.248438 252.166 33.7313 239.286 95.4982C230.259 138.786 225.28 173.842 219.476 192.756C217.087 200.541 216.724 204.829 215.245 207.643C210.625 216.432 186.286 214.927 153.81 213.446C91.6264 210.61 67.1061 212.233 50.89 215.006C47.7473 215.859 44.766 216.491 41.9346 217.559C39.1033 218.626 36.5123 220.109 33.3839 222.276" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M358.896 549.472C358.896 549.736 358.896 550 359.332 573.419C359.768 596.838 360.639 643.404 360.552 672.547C360.433 712.009 356.902 730.127 354.907 748.108C353.749 758.548 354.498 771.788 381.79 774.21C409.083 776.632 463.461 767.87 499.557 761.105C574.537 747.055 596.397 742.461 610.84 740.93C616.657 740.313 625.222 742.096 631.313 739.048C646.933 731.232 618.054 689.821 608.488 648.712C598.246 604.696 584.931 592.5 580.226 557.734C575.173 520.399 572.846 502.957 571.572 489.459C571.243 485.979 569.861 482.702 567.032 481.041C564.203 479.38 559.721 479.456 535.276 482.568C510.831 485.681 466.558 491.828 435.08 495.047C386.459 500.018 365.402 499.491 359.676 501.554C356.939 502.603 354.543 503.657 353.285 512.347C352.028 521.037 351.981 537.331 352.88 555.176" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M412.695 328.362C412.695 329.154 412.695 363.129 414.13 419.625C422.745 469.212 427.564 482.345 431.13 494.661C432.101 497.404 433.255 499.412 436.259 501.916" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M440.583 326.046C440.583 326.203 440.923 354.983 442.072 402.801C444.15 430.594 447.409 445.626 450.754 460.863C452.149 470.003 452.926 482.002 453.727 494.364" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M418.119 335.896C418.523 332.36 421.254 324.062 425.456 320.669C427.425 319.079 430.357 319.108 433.038 319.417C435.719 319.726 438.391 320.658 440.037 322.284C441.682 323.909 442.221 326.199 442.775 332.295" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M140.614 575.242C140.704 575.085 140.795 574.927 163.655 555.008C186.514 535.088 232.139 495.41 263.442 466.66C294.744 437.91 310.34 421.289 323.244 408.576C363.258 374.595 382.506 361.358 398.599 342.259C402.445 338.19 404.982 336.662 413.255 332.814" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M147.731 621.435C148.303 621.435 160.664 624.852 186.295 630.909C213.954 637.445 256.124 637.71 297.846 638.279C325.9 634.854 342.617 628.283 350.907 624.334C354.594 622.638 357.225 621.568 360.089 618.388" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M93.8207 272.169C93.7679 272.169 92.1256 272.197 89.0313 272.539C86.077 272.865 84.0715 274.96 82.5647 276.905C81.0061 278.916 80.9529 282.526 81.3994 285.922C81.5664 287.192 83.0778 287.254 84.5651 287.026C87.9324 286.51 90.5492 285.027 92.0473 283.879C93.9748 279.314 95.1891 272.896 95.0362 271.805C94.6554 271.402 93.6592 271.303 90.8937 271.6" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M169.99 274.494C167.442 274.494 160.689 274.796 156.263 276.199C151.779 277.62 148.497 282.128 146.635 285.716C146.274 286.412 146.742 287.163 147.855 287.791C155.78 292.262 166.156 289.63 167.613 288.862C170.899 287.13 171.952 283.289 173.347 278.636C173.675 277.539 173.6 276.701 173.168 276.14C172.736 275.58 171.836 275.303 170.952 275.09C170.068 274.876 169.228 274.734 168.04 274.491" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+    </svg>
+  );
+}
+/* Solving mental illness / brain models - your SVG */
+function MiniLab() {
+  return (
+    <svg viewBox="0 0 449 883" className="inline-block w-10 h-14 align-middle" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M208.39 316.252C208.39 316.595 208.39 316.938 205.631 401.631C202.872 486.325 197.355 655.359 191.299 831.681" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M184.356 133.329C179.614 133.235 163.534 134.243 113.82 157.973C99.813 164.66 95.6565 173.77 91.5497 186.066C86.0384 202.567 87.3831 219.765 88.2918 230.942C90.3386 256.116 125.715 280.559 137.716 287.921C156.724 299.581 197.511 305.2 222.812 311.293C242.165 315.953 260.165 300.586 283.133 278.109C297.337 264.209 305.56 244.997 308.201 230.924C311.939 211.016 304.444 175.869 289.115 155.724C285.361 150.982 282.499 146.144 279.56 141.406C276.621 136.669 273.691 132.181 270.672 127.556" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M133.445 29.4298C137.673 24.3286 152.472 11.5962 165.893 9.62997C172.066 8.72552 176.363 15.5463 181.023 19.4065C197.014 32.6507 216.247 0.0734172 221.873 1.02029C234.707 3.18055 234.176 19.6051 238.65 22.852C252.244 32.7165 233.093 53.258 226.881 66.5715C224.893 70.832 224.589 76.885 225.465 79.9425C226.803 84.6107 234.718 82.1924 238.721 82.2551C240.437 82.282 239.679 86.8788 237.683 89.8378C228.32 103.715 212.284 104.679 206.075 104.133C203.425 103.9 202.601 100.516 200.223 99.0262C177.87 85.0186 137.469 102.662 132.029 102.988C129.393 103.146 127.429 99.6343 126.373 96.7641C124.295 91.1174 126.237 84.0478 124.78 79.336C122.431 71.7387 106.079 81.6697 98.2814 80.4052C95.1968 79.905 95.0591 76.0592 96.1585 73.5753C98.5017 68.2818 106.435 65.7863 109.967 62.8228C121.052 53.524 86.9517 52.661 84.6815 48.0109C81.2424 40.9668 96.6659 34.0312 106.318 29.2022C113.794 25.5208 126.533 23.7675 143.001 23.7216C149.979 23.8489 154.158 24.2819 158.463 24.728" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M161.262 201.779C161.046 201.829 160.584 205.077 161.185 211.25C161.805 217.615 170.522 221.466 179.12 224.641C183.755 226.353 189.631 225.994 193.607 225.018C197.584 224.041 199.658 221.876 200.632 219.289C202.598 214.059 198.586 206.772 193.099 200.304C190.243 197.786 187.241 196.823 183.25 196.327C179.259 195.83 174.369 195.83 168.293 195.677" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M175.674 199.133H185.395" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M257.048 196.749C252.029 196.749 236.645 198.243 225.145 204.073C222.249 205.541 220.428 208.373 219.203 211.019C217.978 213.665 217.725 216.551 219.38 218.699C233.602 237.162 272.676 224.917 277.894 221.359C282.628 218.131 283.689 211.71 283.247 206.376C282.199 203.86 279.478 201.731 276.59 200.593C273.702 199.454 270.729 199.371 267.665 199.286" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M258.568 199.286C258.463 199.286 258.359 199.286 258.287 200.864C258.215 202.443 258.179 205.6 259.632 207.851C261.086 210.102 264.03 211.35 266.791 206.929" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M265.282 201.429C265.7 201.429 262.203 200.946 257.876 201.023C257.262 201.584 259.86 203.204 259.75 203.653C259.639 204.101 256.742 203.329 252.171 202.533" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M196.493 680.26C200.322 681.321 215.754 686.354 243.322 702.916C254.998 709.93 286.583 747.466 330.886 798.446C356.035 827.386 371.473 834.037 394.455 841.916C399.627 844.003 402.813 846.212 409.376 852.719C415.939 859.225 425.783 869.964 435.925 881.028" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M205.678 494.888C206.306 494.888 230.726 493.777 276.981 490.309C348.778 484.925 372.518 466.084 391.098 448.296C415.273 425.149 428.537 367.494 436.938 322.895C450.217 252.397 447.936 204.18 446.5 196.742C442.472 175.874 417.588 155.104 402.188 145.403C383.165 133.421 366.665 127.14 351.669 117.424C334.988 108.55 315.28 94.6321 299.688 81.8216C290.792 75.1345 279.902 68.0693 268.682 60.79" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M194.284 493.401C193.483 493.401 184.327 491.709 148.777 477.34C121.284 466.228 77.3628 441.054 52.9186 427.778C25.2737 412.764 20.3245 407.258 16.0062 401.18C11.1846 394.393 7.39209 379.096 3.29292 335.166C0.21232 302.152 1.08815 246.947 1.19799 216.287C1.32417 181.064 4.23465 172.943 10.0137 158.78C22.4935 130.181 37.5418 101.674 49.5793 85.655C54.7139 79.718 57.8713 78.2314 67.4772 75.147" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M170.895 259.644C171.314 259.644 179.32 259.644 192.796 259.235C201.827 258.006 210.455 256.917 219.471 255.36C223.306 254.048 225.637 251.677 229.099 248.863" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+    </svg>
+  );
+}
+/* Hip hop - your SVG */
+function MiniHipHop() {
+  return (
+    <svg viewBox="0 0 1253 1102" className="inline-block w-10 h-14 align-middle" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M379.472 612.346C375.177 612.857 352.947 619.691 277.695 631.325C222.722 639.824 151.201 666.244 91.0775 689.688C42.583 708.597 9.78018 728.864 4.81892 748.238C-5.22433 787.459 6.55651 831.574 16.959 880.056C48.9959 1029.37 54.9239 1051.51 59.4727 1060.85C61.715 1065.45 66.6724 1066.64 128.821 1068.62C190.969 1070.6 310.886 1072.52 405.543 1069.2C500.2 1065.87 565.963 1057.25 613.81 1048.03C723.228 1026.95 739.883 1011.45 762.291 1006.91C771.805 1004.98 769.201 925.828 766.523 816.986C763.348 687.985 730.976 641.398 712.074 610.603C705.012 599.099 675.202 598.706 617.364 594.122C539.723 587.97 473.049 574.776 437.19 576.092C411.456 582.557 389.7 594.328 368.694 607.796C360.294 613.303 356.481 616.113 350.434 619.6" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M376.515 1C366.948 1.12777 339.477 4.14444 294.236 36.0554C258.709 61.1137 241.732 95.477 227.369 123.929C212.901 152.591 211.784 197.503 220.598 227.015C232.365 266.418 283.19 276.845 348.067 285.502C368.903 288.282 383.191 278.997 396.614 268.476C424.539 246.587 433.696 196.911 441.42 155.305C446.182 129.652 443.524 109.054 440.089 98.6611C434.516 88.7325 410.214 66.8449 373.533 38.6023C357.741 27.2933 347.68 22.1217 327.278 13.2476" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M319 285C318.834 285 318.669 285 318.28 364.524C317.891 444.047 317.283 603.095 314.857 698.9C312.43 794.706 308.203 822.45 304.093 837.22C299.134 855.038 279.904 856.26 262.102 869.112C257.026 874.787 250.183 883.06 244.667 890.138C239.152 897.216 235.171 902.849 229 910" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M305 836C305.292 836 311.098 836.527 322.769 839.01C334.988 844.334 362.06 864.969 395.599 893.59C408.459 905.047 412.872 910.277 416 917" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M1043.5 427C1067.84 427 1089.94 439.839 1105.99 460.731C1122.04 481.624 1132 510.531 1132 542.5C1132 574.469 1122.04 603.376 1105.99 624.269C1089.94 645.161 1067.84 658 1043.5 658C1019.16 658 997.057 645.161 981.007 624.269C964.956 603.376 955 574.469 955 542.5C955 510.531 964.956 481.624 981.007 460.731C997.057 439.839 1019.16 427 1043.5 427Z" stroke="black" strokeWidth="20"/>
+      <path d="M1004 556C1004.11 559.627 1008.35 577.196 1014.38 588.819C1021.99 603.489 1039.68 599.159 1049.6 595.086C1063.04 583.661 1072.38 575.959 1077.14 568.803C1078.2 566.653 1079.21 564.073 1081 560.116" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M1012.29 490.755C1012.26 490.755 1011.32 490.784 1009.53 491.132C1007.83 491.465 1006.68 493.6 1005.81 495.581C1004.91 497.631 1004.88 501.31 1005.14 504.77C1005.24 506.064 1006.11 506.127 1006.96 505.895C1008.9 505.369 1010.41 503.858 1011.27 502.689C1012.38 498.037 1013.08 491.496 1012.99 490.385C1012.77 489.974 1012.2 489.873 1010.61 490.175" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M1060.76 493.002C1059.16 493.002 1054.91 493.308 1052.13 494.725C1049.31 496.161 1047.25 500.714 1046.08 504.339C1045.85 505.041 1046.14 505.8 1046.84 506.434C1051.83 510.95 1058.35 508.291 1059.27 507.516C1061.33 505.766 1061.99 501.886 1062.87 497.186C1063.08 496.079 1063.03 495.232 1062.76 494.666C1062.49 494.1 1061.92 493.82 1061.37 493.604C1060.81 493.389 1060.28 493.245 1059.54 493" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M320 505C320.384 505 358.919 503.211 419.22 499.664C445.707 498.106 453.561 490.64 459.977 482.253C465.563 472.703 469.057 463.59 470.718 455.86C471.522 452.054 472.25 448.485 473 442" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M445.229 351.774C446.33 355.686 451.577 371.488 455.076 389.321C458.901 408.821 462.863 428.055 474.215 460.165C480.147 476.942 483.874 488.27 487.486 493.129C491.097 497.987 505.347 481.829 517.869 462.151C531.672 440.463 496.026 402.011 484.85 375.786C478.844 361.69 471.41 350.238 463.542 339.385C461.06 337.802 458.199 337.628 454.293 338.598C450.386 339.569 445.52 341.691 440 344.325" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M438.442 348C435.54 347.755 427.641 344.961 423.318 339.723C414.928 329.557 420.956 311.992 423.2 305.164C425.43 298.378 441.361 297.032 460.274 298.579C467.053 299.133 467.689 303.841 467.921 307.799C468.154 311.756 467.858 316.001 467.192 319.874C466.526 323.746 465.5 327.117 464.422 331.497" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M293.51 110.432C293.51 111.187 293.51 115.632 295.179 123.092C299.59 142.816 324.869 130.383 332.249 127.271C335.557 125.875 337.212 122.309 336.978 118.307C336.745 114.305 334.378 109.326 331.176 105.859C324.009 100.588 311.098 98.4346 296.706 99.1253C291.14 100.111 289.101 102.387 287 104.733" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M384.28 107.444C383.901 107.444 380.906 108.287 375.73 110.952C370.644 113.572 368.656 122.785 367.32 131.702C366.647 136.194 366.986 140.842 368.808 144.192C372.749 151.438 381.01 151.536 386.979 150.568C392.507 149.672 398.912 130.994 404.597 107.076C405.889 97.8326 403.947 94.4673 400.63 92.7337C397.313 91 392.681 91 387.908 91" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M291 173C291.593 178.705 304.581 208.269 318.094 223.872C323.581 226.095 336.517 226.777 353.593 224.95C360.603 223.123 364.251 219.469 369 207.456" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M322 506C313.473 506 282.216 503.885 251.221 493.052C217.523 481.274 195.373 442.797 170.445 395.533C159.476 369.89 153.819 337.312 150.169 301.326C148.906 287.422 148.839 282.365 149.168 275" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M1057 666C1057 666.247 1057 666.493 1052.07 736.763C1047.13 807.033 1037.26 947.319 1026 1101" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M1035 930C1034.7 930 1031.66 930.32 1025.81 931.664C1019.91 934.405 983.265 967.562 925.494 1024.09C901.332 1049.23 887.636 1067.18 872 1089" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M1040 774C1039.41 774 1021.13 772.903 987.06 769.108C956.954 765.753 931.292 750.716 903.528 731.212C866.502 705.2 841.297 673.683 828.022 655.588C805.532 624.932 794.662 581.193 786.61 525.095C785.669 511.734 785.555 500.037 788.177 479.754C790.798 459.471 796.157 430.957 802.817 400" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M1036 781C1040.71 779.308 1068.46 767.575 1116.88 732.656C1156.55 704.048 1174.97 664.003 1192.95 618.97C1205.47 587.604 1219.6 535.44 1230.04 494.825C1240.48 454.211 1245.44 425.829 1248.59 394.536C1251.73 363.242 1252.9 329.897 1251.26 287" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+    </svg>
+  );
+}
+/* Swimming with mum - your SVG */
+function MiniOceanSwim() {
+  return (
+    <svg viewBox="0 0 1073 700" className="inline-block w-12 h-10 align-middle" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1072 460.293C1072 501.516 1063.01 538.788 1048.52 565.718C1034.01 592.688 1014.13 609.056 992.429 609.056C970.724 609.056 950.847 592.688 936.337 565.718C921.849 538.788 912.857 501.516 912.857 460.293C912.857 419.07 921.849 381.798 936.337 354.869C950.847 327.899 970.724 311.531 992.429 311.531C1014.13 311.531 1034.01 327.899 1048.52 354.869C1063.01 381.798 1072 419.07 1072 460.293Z" stroke="black" strokeWidth="20"/>
+      <path d="M983.011 393.981C980.452 394.156 968.053 401.143 959.851 411.062C949.499 423.581 952.554 452.677 955.428 468.985C963.491 491.105 968.926 506.458 973.976 514.298C975.493 516.039 977.314 517.697 980.106 520.646" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M1026.47 407.829C1026.47 407.783 1026.45 406.374 1026.22 403.719C1026 401.184 1024.61 399.463 1023.31 398.17C1021.97 396.832 1019.56 396.787 1017.3 397.17C1016.45 397.313 1016.41 398.61 1016.56 399.886C1016.91 402.776 1017.9 405.021 1018.66 406.307C1021.7 407.961 1025.98 409.003 1026.71 408.872C1026.98 408.545 1027.04 407.69 1026.84 405.317" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M1024.87 484.329C1024.87 481.801 1024.71 475.101 1023.96 470.71C1023.21 466.261 1020.83 463.005 1018.93 461.157C1018.57 460.799 1018.17 461.264 1017.84 462.368C1015.48 470.231 1016.87 480.525 1017.27 481.97C1018.19 485.231 1020.22 486.276 1022.68 487.659C1023.26 487.985 1023.7 487.911 1024 487.482C1024.29 487.054 1024.44 486.16 1024.55 485.284C1024.66 484.407 1024.74 483.573 1024.87 482.395" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M1 698.049C1.14849 692.153 2.65643 675.635 24.7902 610.761C44.9541 551.661 86.3291 441.589 106.901 386.018C127.473 330.446 126.775 333.268 121.892 368.718C117.009 404.168 107.963 472.16 103.148 511.291C98.3338 550.421 98.0252 558.629 99.0031 564.867C100.725 575.853 111.978 588.436 124.225 602.604C128.884 607.994 131.222 608.168 133.449 605.922C135.676 603.675 137.936 598.603 147.599 569.956C157.261 541.308 174.259 489.238 187.09 454.527C206.28 402.616 219.525 383.25 225.298 374.017C230.806 365.207 234.861 352 236.821 342.373C240.345 325.068 219.485 385.16 214.704 415.286C209.07 450.783 223.602 487.235 229.879 517.232C232.67 530.566 244.358 550.894 259.622 576.715C264.058 584.217 272.07 582.637 278.963 581.564C290.223 579.812 299.362 563.443 310.244 539.497C313.519 532.288 315.588 523.139 322.911 492.777C330.234 462.415 342.209 410.672 350.857 377.448C363.122 330.332 376.426 304.662 385.654 286.049C387.23 282.871 376.736 312.971 365.157 370.546C359.451 398.914 357.134 426.71 355.489 453.527C352.301 505.497 354.764 540.919 359.105 566.932C370.764 636.795 377.768 647.587 386.882 663.423C391.171 670.876 396.463 674.032 400.704 674.271C405.114 674.519 406.308 655.045 405.821 637.127C405.682 632.002 403.387 635.345 401.12 640.509C398.853 645.673 396.076 652.661 421.005 594.997C445.935 537.334 498.655 414.806 527.392 346.928C556.129 279.049 559.284 269.533 560.4 266.22C561.516 262.908 560.498 266.086 552.559 288.37C544.62 310.653 529.793 351.945 518.45 389.622C507.107 427.298 499.699 460.109 495.055 484.465C482.898 548.234 487.81 576.544 491.705 587.005C495.455 597.077 506.179 598.882 530.046 601.753C549.026 604.035 582.083 605.37 611.143 574.076C640.203 542.783 664.298 478.151 677.39 443.671C693.404 401.495 701.694 385.443 718.638 343.839C722.295 334.859 724.775 330.968 719.501 342.485C701.634 381.502 683.979 422.164 675.675 450.798C658.87 508.747 662.188 531.566 667.311 546.565C675.4 570.247 688.669 587.985 695.378 599.662C698.634 605.33 706.274 603.777 713.852 600.883C728.853 595.154 737.593 571.4 753.128 533.273C765.582 502.707 784.145 446.855 794.712 417.353C810.998 371.883 828.917 353.66 829.914 349.713C830.771 346.321 823.659 349.753 820.057 352.478C812.016 358.559 806.525 373.495 803.256 391.834C798.994 415.746 805.304 428.63 812.052 445.184C815.577 453.832 821.874 492.497 831.352 544.983C834.798 564.063 836.531 567.399 838.477 569.847C854.679 590.228 893.399 590.551 904.985 589.96C907.802 589.21 910.716 587.816 913.219 586.375C915.723 584.935 917.728 583.491 920.236 580.822" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M823.817 463.284C824.016 459.009 825.779 445.431 841.105 393.717C854.851 347.336 881.614 260.616 896.08 213.967C911.794 163.293 915.721 157.016 919.919 152.89C922.163 151.331 924.639 150.858 926.85 150.615C929.062 150.372 930.934 150.372 932.863 150.372" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M918.787 468.07C915.563 468.695 897.523 477.034 882.618 488.039C877.929 492.59 863.405 503.996 843.893 519.043C836.77 524.928 835.29 527.258 832.514 532.681" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M852.26 196.533C852.26 243.381 817.262 281.219 774.258 281.219C731.254 281.219 696.257 243.381 696.257 196.533C696.257 149.685 731.254 111.849 774.258 111.849C817.262 111.849 852.26 149.685 852.26 196.533Z" stroke="black" strokeWidth="20"/>
+      <path d="M764.318 158.534C761.847 158.635 749.876 162.663 741.957 168.381C731.961 175.598 734.911 192.371 737.687 201.772C745.471 214.523 750.719 223.374 755.595 227.893C757.06 228.897 758.817 229.853 761.514 231.553" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M807.772 166.816C807.772 166.788 807.753 165.907 807.526 164.247C807.308 162.663 805.912 161.587 804.616 160.779C803.276 159.943 800.87 159.915 798.607 160.154C797.76 160.244 797.719 161.054 797.871 161.852C798.215 163.658 799.203 165.061 799.968 165.865C803.01 166.899 807.288 167.55 808.014 167.468C808.283 167.264 808.349 166.729 808.152 165.246" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M806.172 210.217C806.172 208.813 806.012 205.091 805.271 202.652C804.52 200.18 802.137 198.371 800.241 197.344C799.873 197.145 799.477 197.404 799.145 198.017C796.782 202.385 798.173 208.104 798.579 208.907C799.494 210.718 801.524 211.299 803.983 212.068C804.562 212.249 805.006 212.207 805.302 211.969C805.598 211.731 805.744 211.235 805.857 210.748C805.97 210.261 806.045 209.798 806.173 209.143" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M608.408 198.769C608.603 196.326 610.328 188.566 625.329 159.013C638.783 132.508 664.978 82.9496 679.136 56.2911C694.517 27.3322 698.361 23.7452 702.469 21.3873C704.666 20.4965 707.089 20.2264 709.253 20.0873C711.418 19.9482 713.25 19.9482 715.138 19.9482" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M701.536 201.749C698.367 202.095 680.645 206.71 666.003 212.802C661.396 215.322 647.127 221.635 627.958 229.964C620.961 233.221 619.507 234.511 616.779 237.513" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M828.746 447.955C828.746 448.223 828.746 448.49 828.746 454.703C828.746 460.915 828.746 473.065 827.705 489.267" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M186.02 289.346C186.02 289.134 199.502 277.762 230.654 247.715C248.323 228.932 269.77 202.971 284.916 183.488C300.062 164.005 308.257 151.786 316.7 139.197" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M314.239 149.34C314.239 149.922 314.668 172.719 316.034 210.065C325.216 252.168 338.765 285.767 346.739 293.158C349.006 294.21 351.319 294.408 356.866 292.27" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M358.645 289.726C358.645 287.79 359.422 281.718 371.432 236.271C382.173 195.63 404.331 120.387 416.469 78.8782C430.199 31.9313 433.985 23.8125 437.12 18.6197C438.641 16.1013 440.858 14.9865 442.927 14.0516C444.996 13.1167 447.063 12.6938 447.608 14.6369C453.358 35.1273 426.915 78.6642 428.392 121.52C429.132 142.995 439.341 181.391 450.602 225.065C456.031 246.12 460.245 252.682 464.126 256.851C473.535 261.157 485.468 261.703 498.451 257.618C503.014 255.22 509.433 251.252 516.055 246.512" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M516.055 246.512C516.055 242.146 517.208 228.25 529.345 186.812C539.329 152.725 561.108 94.659 574.869 57.7396C588.63 20.8202 594.743 7.45493 597.211 1.62546C598.674 -1.83147 594.344 9.24508 589.372 29.8101C583.516 54.0287 581.879 99.2157 582.607 146.644C583.014 173.108 599.582 185.959 605.659 203.432C607.958 210.043 610.9 210.243 613.066 209.941C615.232 209.639 617.105 208.36 618.739 206.697C620.373 205.034 621.711 203.025 623.091 200.955" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M614.745 195.228C614.485 195.591 612.358 199.797 607.374 211.176C604.383 218.537 600.455 229.12 597.773 235.436C595.091 241.752 593.773 243.48 592.415 245.261" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+      <path d="M636.463 234.267C636.249 234.267 629.241 234.482 617.859 234.926C613.374 235.156 611.511 235.394 608.99 237.451C606.468 239.508 603.345 243.377 600.128 247.364" stroke="black" strokeWidth="20" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+const dreams = [
+  { text: "I want to be the best surfer in the world", icon: <MiniSurfing /> },
+  { text: "I want to open a restaurant one day", icon: <MiniCooking /> },
+  { text: "I want to solve psychiatric illness using brain models", icon: <MiniLab /> },
+  { text: "I want to go to all my favorite hip-hop festivals", icon: <MiniHipHop /> },
+  { text: "I want to ocean swim with my mum", icon: <MiniOceanSwim /> },
+];
+
+export default function Portfolio() {
+  const [tab, setTab] = useState<Tab>("about");
+  const [projectTheme, setProjectTheme] = useState<ProjectTheme | null>(null);
+
+  return (
+    <div className="min-h-screen bg-white text-[#1a1a1a]">
+      {/* Tabs */}
+      <nav className="border-b border-[#ddd] bg-white sticky top-0 z-10">
+        <div className="max-w-2xl mx-auto px-6 py-4 flex gap-8">
+          <button
+            type="button"
+            onClick={() => setTab("about")}
+            className={`font-medium pb-2 border-b-2 transition-colors ${
+              tab === "about" ? "border-[#1a1a1a] text-[#1a1a1a]" : "border-transparent text-[#666] hover:text-[#1a1a1a]"
+            }`}
           >
-            What I&apos;m Working On
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="bg-[#1a1a2e] p-8 rounded-lg border-2 border-[#1F51FF]"
+            About Me
+          </button>
+          <button
+            type="button"
+            onClick={() => setTab("built")}
+            className={`font-medium pb-2 border-b-2 transition-colors ${
+              tab === "built" ? "border-[#1a1a1a] text-[#1a1a1a]" : "border-transparent text-[#666] hover:text-[#1a1a1a]"
+            }`}
           >
-            <h3 className="text-3xl font-bold mb-4 text-[#1F51FF]">
-              <a
-                href="https://www.sub-line.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline text-[#1F51FF]"
-              >
-                SubLine – AI Research Platform for News Organizations
-              </a>
-            </h3>
-            <div className="text-lg text-gray-300 space-y-4">
-              <p>
-                SubLine is a full-stack AI application designed to help
-                journalists explore complex information through AI-powered
-                knowledge graphs.
-              </p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>
-                  <strong>Custom NER Model:</strong> Trained domain-specific
-                  transformer-based entity extraction model to capture noisy and
-                  local entities
-                </li>
-                <li>
-                  <strong>Document-Level Relation Extraction:</strong> Built
-                  comprehensive LLM fine-tuning pipeline on RE-DocRED with
-                  multi-label classification across 97 relation types (Mistral-7B,
-                  RoBERTa, DeBERTa)
-                </li>
-                <li>
-                  <strong>End-to-End Deployment Platform:</strong> Engineered
-                  complete system with preprocessing, automated evaluation
-                  metrics, HuggingFace Hub integration, and production-ready
-                  deployment
-                </li>
-                <li>
-                  <strong>Human-in-the-Loop Graph Interface:</strong> Built
-                  interactive React-based knowledge graph editor where reporters
-                  highlight text, review entities/relationships, and approve
-                  modifications that flow back into the training loop
-                </li>
-                <li>
-                  <strong>Active Pilots:</strong> Currently running pilots with
-                  newsrooms to refine the platform
-                </li>
-              </ul>
-              <p className="pt-4">
-                <strong>Tech Stack:</strong> PyTorch, HuggingFace Transformers,
-                React, Next.js, Flask, Supabase
-              </p>
+            What I&apos;ve Built
+          </button>
+          <button
+            type="button"
+            onClick={() => setTab("dreams")}
+            className={`font-medium pb-2 border-b-2 transition-colors ${
+              tab === "dreams" ? "border-[#1a1a1a] text-[#1a1a1a]" : "border-transparent text-[#666] hover:text-[#1a1a1a]"
+            }`}
+          >
+            My Dreams
+          </button>
+        </div>
+      </nav>
+
+      {/* Page content - white, one page per tab */}
+      <main className="max-w-2xl mx-auto px-6 py-12 min-h-[70vh]">
+        {tab === "about" && (
+          <div className="flex flex-col items-center justify-center py-8">
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full">
+              <div className="flex-shrink-0 w-[200px]">
+                <AboutStickFigure />
+              </div>
+              <div className="relative flex-1">
+                <div className="bg-white border-2 border-[#1a1a1a] rounded-2xl p-4 relative max-w-sm">
+                  <p className="text-lg leading-relaxed m-0">
+                    Hi, I&apos;m Lucy. I try to build technology that helps people. This can look like AI research, building out ML pipelines, full-stack engineering, web-development and honestly any other scrappy thing needs to get done.
+                   I believe that tech should be reliable and human-centered. 
+                  </p>
+                  {/* speech bubble tail pointing at figure */}
+                  <div className="absolute -left-3 top-8 w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[12px] border-r-[#1a1a1a]" />
+                  <div className="absolute -left-2 top-8 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[10px] border-r-white" />
+                </div>
+              </div>
             </div>
-          </motion.div>
-        </div>
-      </section>
+          </div>
+        )}
 
-      <section id="projects" className="min-h-screen py-20">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-6xl font-bold mb-12 text-center text-white-400"
-          >
-            Projects
-          </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {projects.map((project, i) => (
-              <motion.div
-                key={i}
-                className="relative group"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Card className="bg-[#1a1a2e] border-[#1a1a2e] border-lg transition-all duration-300 transform group-hover:scale-105">
-                  <div className="relative overflow-hidden h-[300px]">
-                    <motion.img
-                      src={project.image}
-                      alt={project.title}
-                      className={`object-cover w-full h-full rounded-lg ${
-                        project.objectPosition || "object-center"
+        {tab === "built" && (
+          <div className="min-h-[calc(100vh-57px)] flex flex-col -mx-6 -mb-12 relative">
+            {/* Weathermeter: theme filter only */}
+            <div className="flex-shrink-0 flex flex-wrap items-center justify-center gap-3 py-3 px-3">
+              <span className="text-sm font-medium text-[#666] whitespace-nowrap"></span>
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setProjectTheme(null)}
+                  className={`px-3 py-1.5 rounded-full text-sm font-medium border-2 transition-colors ${
+                    projectTheme === null
+                      ? "border-[#1a1a1a] bg-[#1a1a1a] text-white"
+                      : "border-[#ccc] bg-white text-[#333] hover:border-[#1a1a1a]"
+                  }`}
+                >
+                  All
+                </button>
+                {PROJECT_THEMES.map((theme) => {
+                  const count = projects.filter((p) => p.tags.includes(theme)).length;
+                  if (count === 0) return null;
+                  const active = projectTheme === theme;
+                  return (
+                    <button
+                      key={theme}
+                      type="button"
+                      onClick={() => setProjectTheme(theme)}
+                      className={`px-3 py-1.5 rounded-full text-sm font-medium border-2 transition-colors ${
+                        active
+                          ? "border-[#1a1a1a] bg-[#1a1a1a] text-white"
+                          : "border-[#ccc] bg-white text-[#333] hover:border-[#1a1a1a]"
                       }`}
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                    <motion.div
-                      className="absolute inset-0 bg-[#00ff00]/10 opacity-100 group-hover:bg-gray-900 transition-opacity duration-300 flex items-center justify-center"
-                      whileHover={{ opacity: 1 }}
                     >
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white text-center"
-                      >
-                        <h3 className="opacity-0 group-hover:opacity-100 text-lg font-bold ">
-                          {project.title}
-                        </h3>
-                        <p className="opacity-0 group-hover:opacity-100 text-xs mt-1 text-gray-400">
-                          {project.year}
-                        </p>
-                        <p className="opacity-0 group-hover:opacity-100 text-sm mt-2 px-4">
-                          {project.description}
-                        </p>
-                        <p className="opacity-0 group-hover:opacity-100 mt-4 underline">
-                          SEE MORE
-                        </p>
-                      </a>
-                    </motion.div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section id="skills" className="min-h-screen bg-[#1a1a2e] py-20">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-5xl font-bold mb-16 text-center text-white"
-          >
-            Skills
-          </motion.h2>
-
-          {/* Full-Stack AI Applications */}
-          <div className="mb-12">
-            <h3 className="text-3xl font-bold mb-6 text-[#1F51FF]">
-              Full-Stack AI Applications
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[
-                "HuggingFace Transformers",
-                "PyTorch",
-                "NLP/LLM Fine-tuning",
-                "RAG Pipelines",
-                "Knowledge Graphs",
-                "Human-in-the-Loop Systems",
-                "Computer Vision",
-              ].map((skill, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  className="bg-[#0f0f1e] p-4 rounded-lg border border-[#1F51FF]/30 hover:border-[#1F51FF] transition-colors"
-                >
-                  <span className="text-gray-200">{skill}</span>
-                </motion.div>
-              ))}
+                      {theme}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-
-          {/* Deployment & Engineering */}
-          <div className="mb-12">
-            <h3 className="text-3xl font-bold mb-6 text-[#1F51FF]">
-              Deployment & Engineering
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[
-                "React",
-                "Next.js",
-                "Flask",
-                "Supabase",
-                "CI/CD",
-                "HuggingFace Hub",
-                "Cloud Compute (Vertex AI, AWS)",
-              ].map((skill, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  className="bg-[#0f0f1e] p-4 rounded-lg border border-[#1F51FF]/30 hover:border-[#1F51FF] transition-colors"
-                >
-                  <span className="text-gray-200">{skill}</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Core ML & Research */}
-          <div className="mb-12">
-            <h3 className="text-3xl font-bold mb-6 text-[#1F51FF]">
-              Core ML & Research
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[
-                "Contrastive Learning (SimCSE)",
-                "Reinforcement Learning (Q-Learning, RLHF)",
-                "Adversarial ML Defenses",
-                "Interpretability Methods",
-              ].map((skill, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  className="bg-[#0f0f1e] p-4 rounded-lg border border-[#1F51FF]/30 hover:border-[#1F51FF] transition-colors"
-                >
-                  <span className="text-gray-200">{skill}</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Personal Interests */}
-          <div>
-            <h3 className="text-3xl font-bold mb-6 text-[#1F51FF]">
-              Beyond Code
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[
-                "Ocean Swimming",
-                "Surfing",
-                "Running",
-                "Cooking",
-                "Solving NYT Games",
-                "Creative Writing",
-              ].map((hobby, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  className="bg-[#0f0f1e] p-4 rounded-lg border border-[#1F51FF]/30 hover:border-[#1F51FF] transition-colors"
-                >
-                  <span className="text-gray-200">{hobby}</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline Section */}
-      <section id="timeline" className="min-h-screen py-20 bg-[#0f0f1e]">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-5xl font-bold mb-16 text-center text-white"
-          >
-            Timeline
-          </motion.h2>
-          <div className="space-y-8">
-            {timeline.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="flex gap-6 items-start"
-              >
-                <div className="min-w-[140px] text-right">
-                  <span className="text-[#1F51FF] font-bold text-lg">
-                    {item.year}
-                  </span>
-                </div>
-                <div className="relative flex-1 bg-[#1a1a2e] p-6 rounded-lg border-l-4 border-[#1F51FF]">
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-300">{item.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section id="experience" className="min-h-screen py-20">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-6xl font-bold mb-12 text-center text-white-400"
-          >
-            Experience
-          </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {jobs.map((job, i) => (
-              <motion.div
-                key={i}
-                className="relative group"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Card className="bg-[#1a1a2e] border-[#1a1a2e] border-lg transition-all duration-300 transform group-hover:scale-105">
-                  <div className="relative overflow-hidden h-[300px]">
-                    <motion.img
-                      src={job.image}
-                      alt={job.title}
-                      className="object-contain w-full h-full rounded-lg"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                    <motion.div
-                      className="absolute inset-0 bg-[#00ff00]/10 opacity-100 group-hover:bg-gray-900 transition-opacity duration-300 flex items-center justify-center"
-                      whileHover={{ opacity: 1 }}
+            {/* Floating thought bubbles — organic cluster, soft shadows, gentle float */}
+            <div className="flex-1 relative min-h-[520px] py-10 px-6 overflow-visible">
+              {(projectTheme
+                ? projects.filter((p) => p.tags.includes(projectTheme))
+                : projects
+              ).map((p, i) => {
+                const pos = cloudPositions[i % cloudPositions.length];
+                const shape = cloudShapes[i % cloudShapes.length];
+                const sizeClass =
+                  pos.size === "s"
+                    ? "min-w-[88px] max-w-[150px] hover:min-w-[140px] hover:max-w-[220px]"
+                    : pos.size === "m"
+                      ? "min-w-[100px] max-w-[170px] hover:min-w-[160px] hover:max-w-[260px]"
+                      : "min-w-[110px] max-w-[190px] hover:min-w-[180px] hover:max-w-[280px]";
+                return (
+                  <div
+                    key={`${p.title}-${i}`}
+                    className="group/bubble absolute thought-bubble-float -translate-x-1/2 z-0 hover:z-[100] max-w-[min(280px,85vw)]"
+                    style={{
+                      left: pos.left,
+                      top: pos.top,
+                      animationDelay: `${(i % 5) * 0.4}s`,
+                    }}
+                  >
+                    <a
+                      href={p.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`group block w-full border-2 border-[#1a1a1a] bg-white transition-all duration-200 flex flex-col items-center rounded-2xl min-w-0 box-border ${sizeClass} shadow-[0_6px_24px_rgba(0,0,0,0.06)] group-hover/bubble:shadow-[0_16px_40px_rgba(0,0,0,0.12)] group-hover/bubble:bg-white`}
+                      style={{
+                        borderRadius: shape,
+                        padding: "0.75rem 1.25rem",
+                      }}
                     >
-                      <div className="text-white text-center px-6">
-                        <h3 className="opacity-0 group-hover:opacity-100 text-lg font-bold">
-                          {job.title}
-                        </h3>
-                        <p className="opacity-0 group-hover:opacity-100 text-xs mt-1 text-gray-400">
-                          <a
-                            href={job.link}
-                            target="_blank"
-                            className="hover:underline"
-                            rel="noopener noreferrer"
-                          >
-                            {job.company}
-                          </a>
-                        </p>
-                        <p className="opacity-0 group-hover:opacity-100 text-sm mt-2">
-                          {job.description}
-                        </p>
-                      </div>
-                    </motion.div>
+                      <span className="text-base font-medium text-center text-[#1a1a1a] block leading-tight w-full min-w-0">
+                        {p.title}
+                      </span>
+                      <span className="text-sm text-[#1a1a1a] text-center block mt-0 max-h-0 overflow-hidden opacity-0 transition-all duration-200 whitespace-normal break-words w-full min-w-0 group-hover:max-h-[none] group-hover:opacity-100 group-hover:mt-2 group-hover:overflow-visible">
+                        {p.description}
+                      </span>
+                    </a>
                   </div>
-                </Card>
-              </motion.div>
-            ))}
+                );
+              })}
+            </div>
+            <div className="flex-shrink-0 flex justify-center -mt-8 pb-2 relative">
+              {/* Thought-bubble circles coming out of meditator's head, leading up to clouds */}
+              <span className="absolute bottom-full left-1/2 flex flex-col-reverse items-center gap-1.5 pointer-events-none" style={{ transform: "translate(-50%, -8px)" }}>
+                <span className="w-5 h-5 rounded-full border-2 border-[#1a1a1a] bg-white" />
+                <span className="w-7 h-7 rounded-full border-2 border-[#1a1a1a] bg-white" />
+                <span className="w-9 h-9 rounded-full border-2 border-[#1a1a1a] bg-white" />
+              </span>
+              <div className="w-[140px]">
+                <MeditatingStickFigure />
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        )}
+
+        {tab === "dreams" && (
+          <div className="flex flex-col items-center justify-center py-8 w-full max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row items-center gap-10 md:gap-14 w-full">
+              <div className="flex-shrink-0 w-[180px]">
+                <SleepingStickFigure />
+              </div>
+              <div className="flex-1 min-w-[min(100%,420px)] border-2 border-[#1a1a1a] rounded-3xl p-10 md:p-14 bg-white">
+                <p className="text-lg font-semibold text-[#666] mb-8 uppercase tracking-wide">Dream bubble</p>
+                <ul className="space-y-8 list-none p-0 m-0">
+                  {dreams.map((d, i) => (
+                    <li key={i} className="flex items-center gap-6 border-b border-[#eee] pb-8 last:border-0 last:pb-0">
+                      <span className="flex-shrink-0 [&>svg]:w-14 [&>svg]:h-14">{d.icon}</span>
+                      <span className="text-[#1a1a1a] text-lg md:text-xl">{d.text}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <p className="text-center mt-10 text-xs text-[#999]">
+              Contact me:{" "}
+              <a href="mailto:lucyzim@gmail.com" className="text-[#666] hover:text-[#1a1a1a] hover:underline">
+                lucyzim@gmail.com
+              </a>
+            </p>
+          </div>
+        )}
+      </main>
     </div>
   );
-};
-
-export default Portfolio;
+}

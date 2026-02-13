@@ -1,3 +1,9 @@
 node_modules
 .DS_Store
 /.next
+# Next.js
+.next/
+out/
+
+# Mac
+.DS_Store

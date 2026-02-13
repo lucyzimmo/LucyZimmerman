@@ -1,23 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Triodion:wght@400;500;600;700&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #000000;
-    --foreground: #ffffff;
-  }
+  --background: #f5f3ee;
+  --foreground: #1a1a1a;
+  --muted: #555;
+  --border: #ccc;
+  --link: #0000aa;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: "Nanum Gothic Coding", serif;
+}
+
+/* Gentle floating motion for thought bubbles (vertical only) */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.thought-bubble-float {
+  animation: float-gentle 4s ease-in-out infinite;
 }

@@ -35,7 +35,7 @@ const PROJECT_THEMES: ProjectTheme[] = [
 ];
 
 const projects: Project[] = [
-  { title: "SubLine", description: "AI platform for journalists: knowledge graphs, entity extraction, and human-in-the-loop annotation.", github: "https://github.com/akanshyabhat/backgroundbuddy", tags: ["Journalism", "NLP/LLMs", "React", "AI Research"] },
+  { title: "SubLine", description: "AI platform for journalists: knowledge graphs, entity extraction, and human-in-the-loop annotation.", github: "https://github.com/akanshyabhat/backgroundbuddy", tags: ["Journalism", "NLP/LLMs", "React", "AI research"] },
   { title: "Navigator", description: "Mobile platform that guides asylum seekers through the legal process and helps generate declaration PDFs with AI.", github: "https://github.com/lucyzimmo/AsylumAssist", tags: ["Human rights", "Legal tech", "NLP/LLMs", "React"] },
   { title: "The Quad", description: "A prediction market for the Stanford community.", github: "https://github.com/lucyzimmo/the-quad", tags: ["Fintech", "React"] },
   { title: "TransparencyGPT", description: "Mobile AI app for explainable bias detection in journalism; selected for Dorm Room Fund.", github: "https://docs.google.com/presentation/d/1FenouPHBdPi9fJLOlw4dqXsBvWRs2eVi/edit?usp=sharing&ouid=109088702521409839637&rtpof=true&sd=true", tags: ["Journalism", "NLP/LLMs", "React"] },
